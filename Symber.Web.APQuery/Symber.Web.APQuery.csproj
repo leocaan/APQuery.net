@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8DFA7C00-57C2-4D27-8BD5-B4126A27AC85}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Symber.Web</RootNamespace>
+    <AssemblyName>Symber.Web.APQuery</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Symber.Web.APQuery.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Symber.Web.APQuery.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Symber.Web.APQuery.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cdss\ExpressionReader.cs" />
+    <Compile Include="Compilation\APGenBuildProvider.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenAlias.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenAliasCollection.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenBusinessModelSection.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Compilation\BusinessModel\APGenColumnCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Compilation\BusinessModel\APGenDalProvider.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenIndex.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenIndexCollection.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenOrder.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenOrderCollection.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenRelation.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenRelationCollection.cs" />
+    <Compile Include="Compilation\BusinessModel\APGenTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Compilation\BusinessModel\APGenTableCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Compilation\BusinessModel\APGenBusinessModelSection.CodeDom.cs" />
+    <Compile Include="Compilation\Code\APGenCodeSectionGroup.cs" />
+    <Compile Include="Compilation\Code\APGenEnum.cs" />
+    <Compile Include="Compilation\Code\APGenEnumCollection.cs" />
+    <Compile Include="Compilation\Code\APGenEnumItem.cs" />
+    <Compile Include="Compilation\Code\APGenEnumItemCollection.cs" />
+    <Compile Include="Compilation\Code\APGenEnumsSection.cs" />
+    <Compile Include="Compilation\Code\APGenNamespace.cs" />
+    <Compile Include="Compilation\Code\APGenNamespaceCollection.cs" />
+    <Compile Include="Compilation\Code\APGenNamespacesSection.cs" />
+    <Compile Include="Compilation\Code\APGenEnumsSection.CodeDemo.cs" />
+    <Compile Include="Compilation\Code\APGenNamespacesSection.CodeDemo.cs" />
+    <Compile Include="Compilation\Gen\APGenCollectionAttribute.cs" />
+    <Compile Include="Compilation\Gen\APGenDefaultSection.cs" />
+    <Compile Include="Compilation\Gen\APGenFactory.cs" />
+    <Compile Include="Compilation\Gen\VirtualPathAPGenHost.cs" />
+    <Compile Include="Compilation\Gen\APGenHost.cs" />
+    <Compile Include="Compilation\Gen\APGenManager.cs" />
+    <Compile Include="Compilation\Gen\IAPGenSectionHandler.cs" />
+    <Compile Include="Compilation\Gen\IAPGenXmlNode.cs" />
+    <Compile Include="Compilation\Gen\KeyValueAPGenElement.cs" />
+    <Compile Include="Compilation\Gen\KeyValueAPGenElementCollection.cs" />
+    <Compile Include="Compilation\Gen\NameValueAPGenElement.cs" />
+    <Compile Include="Compilation\Gen\NameValueAPGenElementCollection.cs" />
+    <Compile Include="Data\APDalProviderHelper.cs" />
+    <Compile Include="Data\SqlExpr\APSqlDateGroupExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlAggregationExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlAsteriskExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlDateGroupMode.cs" />
+    <Compile Include="Data\SqlExpr\APSqlOperateExpr.cs" />
+    <Compile Include="Data\SqlExpr\IAPSqlValueExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlThroughExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlConstExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlColumnExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlExpr.cs" />
+    <Compile Include="Data\SqlAPDalProvider.Sync.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlSetPhraseSelector.cs" />
+    <Compile Include="Data\SqlPhrase\IAPSqlPhrase.cs" />
+    <Compile Include="Data\SqlClause\APSqlSelectClause.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlExprPhrase.cs" />
+    <Compile Include="Extensions\APColumnDefExtensions.cs" />
+    <Compile Include="Extensions\APSqlConditionPhraseExtersions.cs" />
+    <Compile Include="Extensions\APSqlAsteriskExprExtersions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\APSqlSelectCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlUpdateCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlInsertCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlDeleteCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlOperateExprExtersions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\APSqlWherePhraseExtensions.cs" />
+    <Compile Include="Report\APRptConditionBuilder.cs" />
+    <Compile Include="Report\Json\APRptJsonFilterField.cs" />
+    <Compile Include="Report\Json\APRptJsonColumnTitle.cs" />
+    <Compile Include="Report\Json\APRptJsonGroupSummary.cs" />
+    <Compile Include="Report\APRptReportBuilder.cs" />
+    <Compile Include="Report\APRptViewBuilder.cs" />
+    <Compile Include="Report\Column\APRptColumn.cs" />
+    <Compile Include="Report\Column\SingleAPRptColumn.cs" />
+    <Compile Include="Report\Def\APRptConditionDef.cs" />
+    <Compile Include="Report\Def\APRptGroupDef.cs" />
+    <Compile Include="Report\Def\APRptFilterDef.cs" />
+    <Compile Include="Report\Def\APRptFilterDefCollection.cs" />
+    <Compile Include="Report\Def\APRptOrderDef.cs" />
+    <Compile Include="Report\Def\APRptGroupDefCollection.cs" />
+    <Compile Include="Report\Def\APRptOrderDefCollection.cs" />
+    <Compile Include="Report\Def\APRptReferDefCollection.cs" />
+    <Compile Include="Report\Def\APRptReferDef.cs" />
+    <Compile Include="Report\Def\APRptReportDef.cs" />
+    <Compile Include="Report\Filter\APRptFilter.cs" />
+    <Compile Include="Report\Column\IDictionaryAPRptColumn.cs" />
+    <Compile Include="Report\Column\APRptColumnCollection.cs" />
+    <Compile Include="Report\Filter\APRptFilterComparator.cs" />
+    <Compile Include="Report\Filter\APRptConditionParseException.cs" />
+    <Compile Include="Report\Filter\APRptFilterRpnUnit.cs" />
+    <Compile Include="Report\Filter\APRptFilterType.cs" />
+    <Compile Include="Report\Column\APRptDateTimeType.cs" />
+    <Compile Include="Project\APRadix64.cs" />
+    <Compile Include="Report\Column\CheckAPColumnEx.cs" />
+    <Compile Include="Report\Column\CompositeAPRptColumn.cs" />
+    <Compile Include="Report\Column\CurrencyAPRptColumn.cs" />
+    <Compile Include="Report\Column\DateTimeAPRptColumn.cs" />
+    <Compile Include="Report\Column\DecimalAPRptColumn.cs" />
+    <Compile Include="Report\Column\DoubleAPRptColumn.cs" />
+    <Compile Include="Report\Column\EmailAPRptColumn.cs" />
+    <Compile Include="Report\Column\EnumAPRptColumn.cs" />
+    <Compile Include="Report\Column\Int16APRptColumn.cs" />
+    <Compile Include="Report\Column\Int32APRptColumn.cs" />
+    <Compile Include="Report\Column\Int64APRptColumn.cs" />
+    <Compile Include="Report\Column\LongTextAPRptColumn.cs" />
+    <Compile Include="Report\Column\LookupAPRptColumn.cs" />
+    <Compile Include="Report\Column\MultiLineTextAPRptColumn.cs" />
+    <Compile Include="Report\Column\NumberAPRptColumn.cs" />
+    <Compile Include="Report\Filter\APRptFilterParseException.cs" />
+    <Compile Include="Report\Filter\APRptFilterLogicParser.cs" />
+    <Compile Include="Report\Filter\APRptFilterValuesParser.cs" />
+    <Compile Include="Report\Column\PercentAPRptColumn.cs" />
+    <Compile Include="Report\Column\RegexAPRptColumn.cs" />
+    <Compile Include="Report\Column\TextAPRptColumn.cs" />
+    <Compile Include="Report\Column\UInt16APRptColumn.cs" />
+    <Compile Include="Report\Column\UInt32APRptColumn.cs" />
+    <Compile Include="Report\Column\UInt64APRptColumn.cs" />
+    <Compile Include="Report\Column\UrlAPRptColumn.cs" />
+    <Compile Include="Report\Def\APRptViewDef.cs" />
+    <Compile Include="Report\APRptSource.cs" />
+    <Compile Include="Extensions\APDatabaseExtensions.cs" />
+    <Compile Include="Symber.Web\APCVHelper.cs" />
+    <Compile Include="Symber.Web\APResource.cs" />
+    <Compile Include="Compilation\Gen\APGen.cs" />
+    <Compile Include="Compilation\Gen\APGenElement.cs" />
+    <Compile Include="Compilation\Gen\APGenElementCollection.cs" />
+    <Compile Include="Compilation\Gen\APGenElementInformation.cs" />
+    <Compile Include="Compilation\Gen\APGenElementMap.cs" />
+    <Compile Include="Compilation\Gen\APGenElementProperty.cs" />
+    <Compile Include="Compilation\Gen\APGenException.cs" />
+    <Compile Include="Compilation\Gen\APGenProperty.cs" />
+    <Compile Include="Compilation\Gen\APGenPropertyAttribute.cs" />
+    <Compile Include="Compilation\Gen\APGenPropertyCollection.cs" />
+    <Compile Include="Compilation\Gen\APGenPropertyInformation.cs" />
+    <Compile Include="Compilation\Gen\APGenPropertyInformationCollection.cs" />
+    <Compile Include="Compilation\Gen\APGenPropertyOptions.cs" />
+    <Compile Include="Compilation\Gen\APGenPropertyValueOrigin.cs" />
+    <Compile Include="Compilation\Gen\APGenSection.cs" />
+    <Compile Include="Compilation\Gen\APGenSectionCollection.cs" />
+    <Compile Include="Compilation\Gen\APGenSectionGroup.cs" />
+    <Compile Include="Compilation\Gen\APGenSectionGroupCollection.cs" />
+    <Compile Include="Compilation\Gen\APGenSectionInformation.cs" />
+    <Compile Include="Compilation\Gen\GenInfo.cs" />
+    <Compile Include="Compilation\Gen\GenInfoCollection.cs" />
+    <Compile Include="Compilation\Gen\IAPGenHost.cs" />
+    <Compile Include="Compilation\Gen\SectionGroupInfo.cs" />
+    <Compile Include="Compilation\Gen\SectionInfo.cs" />
+    <Compile Include="Compilation\Gen\APGenSection.CodeDom.cs" />
+    <Compile Include="Symber.Web\APTypeHelper.cs" />
+    <Compile Include="Symber.Web\Converter\APConverterBase.cs" />
+    <Compile Include="Symber.Web\Converter\CommaDelimitedStringCollectionAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\GenericEnumAPXmlConverter.cs" />
+    <Compile Include="Symber.Web\Converter\InfiniteIntAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\InfiniteTimeSpanAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\IntegerArrayAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\TimeSpanMinutesAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\TimeSpanMinutesOrInfiniteAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\TimeSpanSecondsAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\TimeSpanSecondsOrInfiniteAPConverter.cs" />
+    <Compile Include="Symber.Web\Converter\WhiteSpaceTrimStringAPConverter.cs" />
+    <Compile Include="Symber.Web\Validator\APValidatorAttribute.cs" />
+    <Compile Include="Symber.Web\Validator\APValidatorBase.cs" />
+    <Compile Include="Configuration\APQuerySection.cs" />
+    <Compile Include="Configuration\APPropertyHelper.cs" />
+    <Compile Include="Data\Def\APColumnDef.cs" />
+    <Compile Include="Data\Def\APColumnIdentityType.cs" />
+    <Compile Include="Data\APDal.cs" />
+    <Compile Include="Data\APDalProvider.cs" />
+    <Compile Include="Data\APDalProviderCollection.cs" />
+    <Compile Include="Data\APDatabase.cs" />
+    <Compile Include="Data\APDataException.cs" />
+    <Compile Include="Data\APEnumDictionary.cs" />
+    <Compile Include="Extensions\APQuery.cs" />
+    <Compile Include="Data\APQueryParser.cs" />
+    <Compile Include="Data\Def\APRelationDef.cs" />
+    <Compile Include="Data\SqlExpr\APSqlAggregationType.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlConditionAndPhrase.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlConditionJoinType.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlConditionOperator.cs" />
+    <Compile Include="Data\APSqlConditionParameterSuffixProvider.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlConditionPhrase.cs" />
+    <Compile Include="Data\SqlCommand\APSqlDeleteCommand.cs" />
+    <Compile Include="Data\SqlClause\APSqlFromClause.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlFromPhrase.cs" />
+    <Compile Include="Data\SqlClause\APSqlGroupByClause.cs" />
+    <Compile Include="Data\SqlCommand\APSqlInsertCommand.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlConditionOrPhrase.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlOrderAccording.cs" />
+    <Compile Include="Data\SqlClause\APSqlOrderByClause.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlOrderPhrase.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlPhrase.cs" />
+    <Compile Include="Data\Def\APRelationCascadeType.cs" />
+    <Compile Include="Data\SqlCommand\APSqlSelectCommand.cs" />
+    <Compile Include="Data\SqlCommand\APSqlSelectMode.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlSelectPhrase.cs" />
+    <Compile Include="Data\SqlClause\APSqlValuesClause.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlSetPhrase.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlSubQueryScalarRestrict.cs" />
+    <Compile Include="Data\SqlCommand\APSqlUpdateCommand.cs" />
+    <Compile Include="Data\SqlClause\APSqlWhereClause.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlWherePhrase.cs" />
+    <Compile Include="Data\Def\APTableDef.cs" />
+    <Compile Include="Data\Def\BooleanAPColumnDef.cs" />
+    <Compile Include="Data\Def\ByteAPColumnDef.cs" />
+    <Compile Include="Data\Def\BytesAPColumnDef.cs" />
+    <Compile Include="Data\Def\CharAPColumnDef.cs" />
+    <Compile Include="Data\Def\DateTimeAPColumnDef.cs" />
+    <Compile Include="Data\DbHolderBase.cs" />
+    <Compile Include="Data\Def\DecimalAPColumnDef.cs" />
+    <Compile Include="Data\Def\DoubleAPColumnDef.cs" />
+    <Compile Include="Data\Def\EnumAPColumnDef.cs" />
+    <Compile Include="Data\Def\GuidAPColumnDef.cs" />
+    <Compile Include="Data\SqlPhrase\APSqlJoinType.cs" />
+    <Compile Include="Data\SqlCommand\APSqlCommand.cs" />
+    <Compile Include="Data\IAPSqlParameterNameProvider.cs" />
+    <Compile Include="Data\Def\Int16APColumnDef.cs" />
+    <Compile Include="Data\Def\Int32APColumnDef.cs" />
+    <Compile Include="Data\Def\Int64APColumnDef.cs" />
+    <Compile Include="Data\APQueryParser.ParseWriter.cs" />
+    <Compile Include="Data\Def\SByteAPColumnDef.cs" />
+    <Compile Include="Data\Def\SingleAPColumnDef.cs" />
+    <Compile Include="Data\SqlAPDalProvider.cs" />
+    <Compile Include="Data\SqlAPQueryParser.cs" />
+    <Compile Include="Data\Def\StringAPColumnDef.cs" />
+    <Compile Include="Data\Def\UInt16APColumnDef.cs" />
+    <Compile Include="Data\Def\UInt32APColumnDef.cs" />
+    <Compile Include="Data\Def\UInt64APColumnDef.cs" />
+    <Compile Include="Data\SqlDbHolder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Symber.Web\Validator\DefaultAPValidator.cs" />
+    <Compile Include="Symber.Web\Validator\IntegerAPValidator.cs" />
+    <Compile Include="Symber.Web\Validator\IntegerAPValidatorAttribute.cs" />
+    <Compile Include="Symber.Web\Validator\NullableStringAPValidator.cs" />
+    <Compile Include="Symber.Web\Validator\PositiveTimeSpanAPValidator.cs" />
+    <Compile Include="Symber.Web\Validator\PositiveTimeSpanAPValidatorAttribute.cs" />
+    <Compile Include="Symber.Web\Validator\PropertyNameAPValidator.cs" />
+    <Compile Include="Symber.Web\Validator\StringAPValidator.cs" />
+    <Compile Include="Symber.Web\Validator\StringAPValidatorAttribute.cs" />
+    <Compile Include="Xml\APXmlCollectionAttribute.cs" />
+    <Compile Include="Xml\APXmlElement.cs" />
+    <Compile Include="Xml\APXmlElementCollection.cs" />
+    <Compile Include="Xml\APXmlElementInformation.cs" />
+    <Compile Include="Xml\APXmlElementMap.cs" />
+    <Compile Include="Xml\APXmlElementProperty.cs" />
+    <Compile Include="Xml\APXmlException.cs" />
+    <Compile Include="Xml\APXmlProperty.cs" />
+    <Compile Include="Xml\APXmlPropertyAttribute.cs" />
+    <Compile Include="Xml\APXmlPropertyCollection.cs" />
+    <Compile Include="Xml\APXmlPropertyInformation.cs" />
+    <Compile Include="Xml\APXmlPropertyInformationCollection.cs" />
+    <Compile Include="Xml\APXmlPropertyOptions.cs" />
+    <Compile Include="Xml\APXmlPropertyValueOrigin.cs" />
+    <Compile Include="Xml\APXmlRoot.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Report\Def\APRptReportDef.xml" />
+    <Content Include="Report\Def\APRptViewDef.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.zh-CHS.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Symber.Web.APQuery.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

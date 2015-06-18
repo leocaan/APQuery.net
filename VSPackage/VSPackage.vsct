@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+
+
+
+
+	<Commands package="guidAPGenPkg">
+		<Groups>
+			<Group guid="guidAPGenCmdSet" id="groupAPGen" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+			</Group>
+		</Groups>
+
+		<Buttons>
+			<Button guid="guidAPGenCmdSet" id="cmdidBuildAPGen" priority="0x0100" type="Button">
+				<Parent guid="guidAPGenCmdSet" id="groupAPGen" />
+				<Icon guid="guidBuildCmdIcons" id="3"/>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings language="en">
+					<ButtonText>APGen Generate</ButtonText>
+				</Strings>
+				<Strings language="zh-CHS">
+					<ButtonText>APGen 生成</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
+
+	<CommandPlacements>
+		<CommandPlacement guid="guidAPGenCmdSet" id="groupAPGen" priority="0x0010">
+			<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBITEMNODE"/>
+		</CommandPlacement>
+	</CommandPlacements>
+
+
+
+		<Symbols>
+		<!-- This is the package guid. -->
+		<GuidSymbol name="guidAPGenPkg" value="{560c3499-b182-4175-83b0-3809c72675a6}" />
+
+		<!-- This is the guid used to group the menu commands together -->
+		<GuidSymbol name="guidAPGenCmdSet" value="{d78cf03f-bf8f-44a8-8733-7b4bcc8fda10}">
+
+			<IDSymbol name="groupAPGen" value="0x1020" />
+			<IDSymbol name="cmdidBuildAPGen" value="0x0100" />
+		</GuidSymbol>
+	</Symbols>
+
+</CommandTable>

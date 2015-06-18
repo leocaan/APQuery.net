@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="APData_PhraseNextError" xml:space="preserve">
+    <value>The phrase type of '{0}' SetNext parameter type '{1}' error, parameter type mast be '{2}'.</value>
+  </data>
+  <data name="APDB_ExpressionColumnCannotAs" xml:space="preserve">
+    <value>Expression APColumnDef use ColumnName for alias,can not set again.</value>
+  </data>
+  <data name="APDB_ExpressionColumnCannotSet" xml:space="preserve">
+    <value>Expression APColumnDef can not be Sql set phrase.</value>
+  </data>
+  <data name="APDB_OperatorExists" xml:space="preserve">
+    <value>Can not create APSqlConditionPhrase with 'Exists' operator,please use APDal.Exists methods.</value>
+  </data>
+  <data name="APDal_ColumnParsedTypeNotImplemented" xml:space="preserve">
+    <value>The parsed type '{0}' of the column is not supported.</value>
+  </data>
+  <data name="APData_UnknownQueryCommand" xml:space="preserve">
+    <value>Command of the query is null or unknown, please check!</value>
+  </data>
+  <data name="APPaging_BadIndex" xml:space="preserve">
+    <value>The pageIndex must be greater than or equal to zero. Index is {0}.</value>
+  </data>
+  <data name="APPaging_BadPageSize" xml:space="preserve">
+    <value>The pageSize must be greater than or equal to zero. PageSize is {0}.</value>
+  </data>
+  <data name="APPaging_BadPageSizeOrIndex" xml:space="preserve">
+    <value>The combination of pageIndex and pageSize cannot exceed the maximum value of System.Int32. Index is {0} and PageSize is {1}.</value>
+  </data>
+  <data name="APProvider_ConnectionNameNotSpecified" xml:space="preserve">
+    <value>The attribute 'connectionStringName' is missing or empty.</value>
+  </data>
+  <data name="APProvider_ConnectionStringNotFound" xml:space="preserve">
+    <value>The connection name '{0}' was not found in the applications configuration or the connection string is empty.</value>
+  </data>
+  <data name="APProvider_NotFound" xml:space="preserve">
+    <value>The provider '{0}' not found.</value>
+  </data>
+  <data name="APData_EnumAPColumnDefT" xml:space="preserve">
+    <value>EnumAPColumnDef T ('{0}') mast be a enum type.</value>
+  </data>
+  <data name="APDB_ParameterArrayDuplicateElement" xml:space="preserve">
+    <value>The array parameter '{0}' should not contain duplicate values.</value>
+  </data>
+  <data name="APDB_ParameterArrayEmpty" xml:space="preserve">
+    <value>The array parameter '{0}' should not be empty.</value>
+  </data>
+  <data name="APDB_ParameterContainComma" xml:space="preserve">
+    <value>The parameter '{0}' must not contain commas.</value>
+  </data>
+  <data name="APDB_ParameterEmpty" xml:space="preserve">
+    <value>The parameter '{0}' must not be empty.</value>
+  </data>
+  <data name="APDB_ParameterTooLong" xml:space="preserve">
+    <value>The parameter '{0}' is too long, it must not exceed {1} chars in length.</value>
+  </data>
+  <data name="APData_SkipQueryNeedPK" xml:space="preserve">
+    <value>Query data with 'skip', the query must have specified primary key column.</value>
+  </data>
+  <data name="APQueryParser_APSqlJoinTypeNotSupported" xml:space="preserve">
+    <value>APSqlJoinType value '{0}' is not supported.</value>
+  </data>
+  <data name="APGen_DefaultGenerated" xml:space="preserve">
+    <value>------------------------------------------------------------------------------
+ This code Section was generated by Default APGen.
+ Type is '{0}', Maybe you not implementation necessary code.
+------------------------------------------------------------------------------</value>
+  </data>
+  <data name="APGen_DefaultValueTypeError" xml:space="preserve">
+    <value>The default value for property '{0}' has a different type than the one of the property itself: expected {1} but was {2}.</value>
+  </data>
+  <data name="APGen_DuplicateAttribute" xml:space="preserve">
+    <value>The attribute '{0}' may only appear once in this element.</value>
+  </data>
+  <data name="APGen_DuplicateElement" xml:space="preserve">
+    <value>The element &lt;{0}&gt; may only appear once in this section.</value>
+  </data>
+  <data name="APGen_DuplicateElementInCollection" xml:space="preserve">
+    <value>Duplicate element in collection.</value>
+  </data>
+  <data name="APGen_IndexOutOfRange" xml:space="preserve">
+    <value>Index {0} is out of range.</value>
+  </data>
+  <data name="APGen_MissingRequiredAttribute" xml:space="preserve">
+    <value>{0} Required attribute '{1}' missing.</value>
+  </data>
+  <data name="APGen_PropertyCannotBeParsed" xml:space="preserve">
+    <value>The value of the property '{0}' cannot be parsed.</value>
+  </data>
+  <data name="APGen_PropertyNotExist" xml:space="preserve">
+    <value>Property '{0}' not found in gen element.</value>
+  </data>
+  <data name="APGen_PropertyValueInvalid" xml:space="preserve">
+    <value>The value for the property '{0}' is not valid. The error is: {1}.</value>
+  </data>
+  <data name="APGen_RedefinedSection" xml:space="preserve">
+    <value>The section &lt;{0}&gt; is defined more than once in the same gen file.</value>
+  </data>
+  <data name="APGen_SectionInitTwice" xml:space="preserve">
+    <value>The section is being initialized twice: '{0}'.</value>
+  </data>
+  <data name="APGen_UnrecognizedAttribute" xml:space="preserve">
+    <value>Unrecognized attribute '{0}'.</value>
+  </data>
+  <data name="APGen_UnrecognizedAttributeInElement" xml:space="preserve">
+    <value>Unrecognized attribute '{1}' in &lt;'{0}'&gt;.</value>
+  </data>
+  <data name="APGen_UnrecognizedElement" xml:space="preserve">
+    <value>Unrecognized element '{0}'.</value>
+  </data>
+  <data name="APGen_UnrecognizedSection" xml:space="preserve">
+    <value>Unrecognized configuration section &lt;{0}&gt;.</value>
+  </data>
+  <data name="APValidate_NameContainPeriod" xml:space="preserve">
+    <value>Name cannot contain period.</value>
+  </data>
+  <data name="APValidate_NameEmpty" xml:space="preserve">
+    <value>Name cannot be empty.</value>
+  </data>
+  <data name="APValidate_NumberInTheRange" xml:space="preserve">
+    <value>The value must not be in the range {0} - {1}.</value>
+  </data>
+  <data name="APValidate_NumberOutOfRange" xml:space="preserve">
+    <value>The value must be in the range {0} - {1}.</value>
+  </data>
+  <data name="APValidate_NumberResolution" xml:space="preserve">
+    <value>The value must have a resolution of {0}.</value>
+  </data>
+  <data name="APValidate_StringAtLeast" xml:space="preserve">
+    <value>The string must be at least {0} characters long.</value>
+  </data>
+  <data name="APValidate_StringInvalidContain" xml:space="preserve">
+    <value>The string cannot contain any of the following characters: '{0}'.</value>
+  </data>
+  <data name="APValidate_StringMoreThen" xml:space="preserve">
+    <value>The string must be no more than {0} characters long.</value>
+  </data>
+  <data name="APValidate_TimeMustBePositive" xml:space="preserve">
+    <value>The TimeSpan value must be positive.</value>
+  </data>
+  <data name="APGen_InvalidRootElement" xml:space="preserve">
+    <value>Gen file does not have a valid root element.</value>
+  </data>
+  <data name="APGen_NotElement" xml:space="preserve">
+    <value>Property '{0}' is not a APGenElement.</value>
+  </data>
+  <data name="APGen_RequiredAttribute" xml:space="preserve">
+    <value>Required attribute '{0}' not found.</value>
+  </data>
+  <data name="APGen_SectionAlreadyExists" xml:space="preserve">
+    <value>Cannot add a Section. A section or section group already exists with the name '{0}'.</value>
+  </data>
+  <data name="APGen_SectionNameAlreadyExists" xml:space="preserve">
+    <value>A section or sectiongroup named '{0}' already exists.</value>
+  </data>
+  <data name="APGen_ValidatorNotSupportType" xml:space="preserve">
+    <value>Validator does not support type {0}.</value>
+  </data>
+  <data name="APGen_FileNotFound" xml:space="preserve">
+    <value>File '{0}' not found.</value>
+  </data>
+  <data name="APGen_TypeNotFound" xml:space="preserve">
+    <value>Type not found: '{0}'.</value>
+  </data>
+  <data name="APBusiness_DalDefComment" xml:space="preserve">
+    <value>APDalDef is a Partial class auto-generated by tool. It is used to define every Dal classes inherit form APDal. You can add Partial classes of the same name to extend.</value>
+  </data>
+  <data name="APBusiness_DBDefComment" xml:space="preserve">
+    <value>APDBDef is a Partial class auto-generated by tool. It is used to define APTableDef and APRelationDef. You can add Partial classes of the same name to extend.</value>
+  </data>
+  <data name="APBusiness_InitDataComment" xml:space="preserve">
+    <value>Initialize data.</value>
+  </data>
+  <data name="APBusiness_RelationTargetMissing" xml:space="preserve">
+    <value>Target of Relation '{0}' missing. (masterTable, masterColumn, slaveTable, slaveColumn).</value>
+  </data>
+  <data name="APBusiness_BplDefComment" xml:space="preserve">
+    <value>APBplDef is a Partial class auto-generated by tool. It is used to define every Bpl classes. You can add Partial classes of the same name to extend.</value>
+  </data>
+  <data name="APBusiness_DBDefStaticConstructor" xml:space="preserve">
+    <value>Static constractor.</value>
+  </data>
+  <data name="APBusiness_DefaultConstructorComment" xml:space="preserve">
+    <value>Default constructor.</value>
+  </data>
+  <data name="APBusiness_DeleteByComment" xml:space="preserve">
+    <value>Delete by {0}.</value>
+  </data>
+  <data name="APBusiness_InitFieldsConstructorComment" xml:space="preserve">
+    <value>Constructor with all field values.</value>
+  </data>
+  <data name="APBusiness_InsertComment" xml:space="preserve">
+    <value>Insert Data.</value>
+  </data>
+  <data name="APBusiness_MapComment" xml:space="preserve">
+    <value>Fill the data.</value>
+  </data>
+  <data name="APBusiness_MapHandlerComment" xml:space="preserve">
+    <value>Fill the data delegate.</value>
+  </data>
+  <data name="APBusiness_PrimaryDeleteComment" xml:space="preserve">
+    <value>Delete data by primary key.</value>
+  </data>
+  <data name="APBusiness_PrimaryGetComment" xml:space="preserve">
+    <value>Get data by PK.</value>
+  </data>
+  <data name="APBusiness_UpdateComment" xml:space="preserve">
+    <value>Update Data.</value>
+  </data>
+  <data name="APBusiness_AssignmentComment" xml:space="preserve">
+    <value>Assignment.</value>
+  </data>
+  <data name="APBusiness_CacheAddComment" xml:space="preserve">
+    <value>Add data to cache.</value>
+  </data>
+  <data name="APBusiness_CacheClearComment" xml:space="preserve">
+    <value>Clear cache.</value>
+  </data>
+  <data name="APBusiness_CacheRemoveComment" xml:space="preserve">
+    <value>Remove data from cache.</value>
+  </data>
+  <data name="APBusiness_CascadeWarningMessage" xml:space="preserve">
+    <value>Cascade Delete Warning. The rule be related by '{0}', can not be delete!</value>
+  </data>
+  <data name="APBusiness_CheckRepeatComment" xml:space="preserve">
+    <value>Check repeat data with specified column.</value>
+  </data>
+  <data name="APBusiness_ConditionDeleteComment" xml:space="preserve">
+    <value>Delete data by condition.</value>
+  </data>
+  <data name="APBusiness_ConditionQueryComment" xml:space="preserve">
+    <value>Query by condition.</value>
+  </data>
+  <data name="APBusiness_ConditionQueryCountComment" xml:space="preserve">
+    <value>Query count by condition.</value>
+  </data>
+  <data name="APBusiness_DuplicatedColumn" xml:space="preserve">
+    <value>Duplicated value existed in column '{0}' of table '{1}'.</value>
+  </data>
+  <data name="APBusiness_GetAllComment" xml:space="preserve">
+    <value>Get all data.</value>
+  </data>
+  <data name="APBusiness_GetInitDataComment" xml:space="preserve">
+    <value>Get the initial data of the table.</value>
+  </data>
+  <data name="APBusiness_QueryByComment" xml:space="preserve">
+    <value>Query by {0}.</value>
+  </data>
+  <data name="APBusiness_QueryCountByComment" xml:space="preserve">
+    <value>Query count by {0}.</value>
+  </data>
+  <data name="APRptFilter_BetweenMustHaveTwoValues" xml:space="preserve">
+    <value>The filter comparator 'Between' must have two values.</value>
+  </data>
+  <data name="APRptFilter_UnsupportSpecialDateValueOrOnlyOne" xml:space="preserve">
+    <value>In datetime column, the comparator '{0}' unsupport special date value, or only one.</value>
+  </data>
+  <data name="APRptFilter_InvalidDateTime" xml:space="preserve">
+    <value>Invalid datetime.</value>
+  </data>
+  <data name="APRptFilter_InvalidNumber" xml:space="preserve">
+    <value>Invalid number, can not parse to type of '{0}'.</value>
+  </data>
+  <data name="APRptFilter_InvalidValue" xml:space="preserve">
+    <value>Invalid value, can not parse value '{0}' to type of '{1}'.</value>
+  </data>
+  <data name="APRptFilter_UnsupportDBNull" xml:space="preserve">
+    <value>Unsupport DBNull.</value>
+  </data>
+  <data name="APRptFilter_UnsupportComparator" xml:space="preserve">
+    <value>The column type of '{0}' unsupport the filter Comparator '{1}'.</value>
+  </data>
+  <data name="APRptFilter_UnsupportMultiValues" xml:space="preserve">
+    <value>The filter comparator '{0}' unsupport multi-values.</value>
+  </data>
+  <data name="APRptFilter_ValuesCountCannotBeZero" xml:space="preserve">
+    <value>The filter values count can not be zero.</value>
+  </data>
+  <data name="APData_IAPColumnDefUnsupportParamName" xml:space="preserve">
+    <value>The IAPColumnDef type of '{0}' unsupport parameter name.</value>
+  </data>
+  <data name="APProject_Regex_Invalidate_Email" xml:space="preserve">
+    <value>Invalidate Email.</value>
+  </data>
+  <data name="APProject_Regex_Invalidate_Url" xml:space="preserve">
+    <value>Invalidate URL.</value>
+  </data>
+  <data name="APBusiness_CompareEqualsComment" xml:space="preserve">
+    <value>Compare equals.</value>
+  </data>
+  <data name="APRptFilter_ParseError" xml:space="preserve">
+    <value>Invalid string of values.</value>
+  </data>
+  <data name="APXml_DefaultValueTypeError" xml:space="preserve">
+    <value>The default value for property '{0}' has a different type than the one of the property itself: expected {1} but was {2}.</value>
+  </data>
+  <data name="APXml_DuplicateAttribute" xml:space="preserve">
+    <value>The attribute '{0}' may only appear once in this element.</value>
+  </data>
+  <data name="APXml_DuplicateElement" xml:space="preserve">
+    <value>The element &lt;{0}&gt; may only appear once in this section.</value>
+  </data>
+  <data name="APXml_DuplicateElementInCollection" xml:space="preserve">
+    <value>Duplicate element in collection.</value>
+  </data>
+  <data name="APXml_ElementPropertyUnsupportReaderOrWriter" xml:space="preserve">
+    <value>APXmlElement unsupport IsElementPropery flag in XmlReader or XmlWriter mode. Please use in XmlDocument mode.</value>
+  </data>
+  <data name="APXml_IsNotKeyModeCollection" xml:space="preserve">
+    <value>Collection is not key mode.</value>
+  </data>
+  <data name="APXml_NotAElement" xml:space="preserve">
+    <value>Property '{0}' is not a APGenElement.</value>
+  </data>
+  <data name="APXml_PropertyCannotBeParsed" xml:space="preserve">
+    <value>The value of the property '{0}' cannot be parsed.</value>
+  </data>
+  <data name="APXml_PropertyNotExist" xml:space="preserve">
+    <value>Property '{0}' not found in gen element.</value>
+  </data>
+  <data name="APXml_PropertyValueInvalid" xml:space="preserve">
+    <value>The value for the property '{0}' is not valid. The error is: {1}.</value>
+  </data>
+  <data name="APXml_RequiredAttribute" xml:space="preserve">
+    <value>Required attribute '{0}' not found.</value>
+  </data>
+  <data name="APXml_UnrecognizedAttribute" xml:space="preserve">
+    <value>Unrecognized attribute '{0}'.</value>
+  </data>
+  <data name="APXml_UnrecognizedAttributeInElement" xml:space="preserve">
+    <value>Unrecognized attribute '{1}' in &lt;'{0}'&gt;.</value>
+  </data>
+  <data name="APXml_UnrecognizedElement" xml:space="preserve">
+    <value>Unrecognized element '{0}'.</value>
+  </data>
+  <data name="APXml_ValidatorNotSupportType" xml:space="preserve">
+    <value>Validator does not support type {0}.</value>
+  </data>
+  <data name="AP_IndexOutOfRange" xml:space="preserve">
+    <value>Index {0} is out of range.</value>
+  </data>
+  <data name="AP_FileNotFound" xml:space="preserve">
+    <value>File '{0}' not found.</value>
+  </data>
+  <data name="APRptFilter_LogicExpressionInvalidate" xml:space="preserve">
+    <value>The filter logic expression invalidate.</value>
+  </data>
+  <data name="APRptFilter_LogicIdentifierInvalidate" xml:space="preserve">
+    <value>The filter logic expression has Invalidate identifier '{0}'.</value>
+  </data>
+  <data name="APBusiness_BatchDeleteComment" xml:space="preserve">
+    <value>Batch Delete Data.</value>
+  </data>
+  <data name="APBusiness_BatchInsertComment" xml:space="preserve">
+    <value>Batch Insert Data.</value>
+  </data>
+  <data name="APBusiness_BatchUpdateComment" xml:space="preserve">
+    <value>Batch Update Data.</value>
+  </data>
+  <data name="APRptFilter_LogicSerialNotFound" xml:space="preserve">
+    <value>The filter logic expression serial '{0}' not found.</value>
+  </data>
+  <data name="APData_QueryTakeError" xml:space="preserve">
+    <value>Query data with 'take', the value must be null or great then 0.</value>
+  </data>
+  <data name="APData_QuerySkipError" xml:space="preserve">
+    <value>Query data with 'skip', the value must be null or great then or equals 0.</value>
+  </data>
+  <data name="APConfig_NotFindSection" xml:space="preserve">
+    <value>Can not Find Section '{0}' in config file.</value>
+  </data>
+  <data name="APDal_DBUnsupport" xml:space="preserve">
+    <value>Current database unsupport '{0}'.</value>
+  </data>
+</root>
