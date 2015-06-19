@@ -26,7 +26,7 @@ About the .agpen file
 
   Look at here simple, the details please refer to the documents.
 
-```
+```xml
 <businessModel autoSyncDatabase="true" autoInitDatabase="true">
   <tables>
     <table name="Department" comment="Departments of company">
@@ -68,7 +68,7 @@ Usage of ORM
 ------------
 
 **Insert a data**
-```
+```cs
 var dep = new Department(1, 0, "Sales", "000-000-0000");
 dep.Insert();
 ```
