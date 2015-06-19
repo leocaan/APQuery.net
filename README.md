@@ -6,8 +6,6 @@ SQL expression, database access layout, business logic process and data entity.
 
 **<font size="+1">Home page, documentation, and support links: http://leocaan.github.io/APQuery.net/</font>**
 
-				To get started, checkout examples and documentation at
-				https://select2.github.io/
 
 Getting Started
 ---------------
@@ -66,8 +64,9 @@ About the .agpen file
 
 
 What objectizations does we have
------------------
+--------------------------------
 
+```
 ---------------------------------------------------------------------
 Entity Defined                          |   Department
 ---------------------------------------------------------------------
@@ -77,7 +76,7 @@ Data Access Layout (Dal) Defined        |   APDalDef.DepartmentDal
 ---------------------------------------------------------------------
 Business Process Logic (Bpl) Defined    |   APBplDef.DepartmentBpl
 ---------------------------------------------------------------------
-
+```
 
 
 Usage of ORM
