@@ -49,6 +49,7 @@ namespace Symber.Web.Compilation
 		private string compareEqualsMethodName = "CompareEquals";
 		private string insertMethodName = "Insert";
 		private string updateMethodName = "Update";
+		private string updatePartialMethodName = "UpdatePartial";
 		private string primaryDeleteMethodName = "PrimaryDelete";
 		private string conditionDeleteMethodName = "ConditionDelete";
 		private string conditionQueryCountMethodName = "ConditionQueryCount";
@@ -817,10 +818,10 @@ namespace Symber.Web.Compilation
 				ctd.Members.Add(method);
 			}
 
-			// update2
+			// update partial
 			{
-				CodeMemberMethod method = NewMemberMethod(updateMethodName, MemberAttributes.Public | MemberAttributes.Static, APResource.APBusiness_UpdateComment);
-				CodeMethodInvokeExpression call = MethodInvoke(bpl, updateMethodName);
+				CodeMemberMethod method = NewMemberMethod(updatePartialMethodName, MemberAttributes.Public | MemberAttributes.Static, APResource.APBusiness_UpdateComment);
+				CodeMethodInvokeExpression call = MethodInvoke(bpl, updatePartialMethodName);
 				method.Statements.Add(call);
 				ctd.Members.Add(method);
 				foreach (APGenColumn pk in table.PrimaryKeyColumns)
@@ -987,9 +988,10 @@ namespace Symber.Web.Compilation
 				// update method
 				//
 				CreateDalUpdate(ctd, table, isView);
-				// update method
+				
+				// update partial method
 				//
-				CreateDalUpdate2(ctd, table, isView);
+				CreateDalUpdatePartial(ctd, table, isView);
 
 				// primary delete method
 				//
@@ -1121,11 +1123,11 @@ namespace Symber.Web.Compilation
 		}
 
 
-		private void CreateDalUpdate2(CodeTypeDeclaration cns, APGenTable table, bool isView)
+		private void CreateDalUpdatePartial(CodeTypeDeclaration cns, APGenTable table, bool isView)
 		{
 			if (isView) return;
 
-			CodeMemberMethod method = NewMemberMethod(updateMethodName, MemberAttributes.Public, APResource.APBusiness_UpdateComment);
+			CodeMemberMethod method = NewMemberMethod(updatePartialMethodName, MemberAttributes.Public, APResource.APBusiness_UpdateComment);
 			cns.Members.Add(method);
 			foreach (APGenColumn pk in table.PrimaryKeyColumns)
 			{
@@ -1431,9 +1433,9 @@ namespace Symber.Web.Compilation
 				}
 				#endregion
 
-				#region [ Update(...)2 ]
+				#region [ UpdatePartial(...) ]
 				{
-					CodeMemberMethod method = NewMemberMethod(updateMethodName, MemberAttributes.Public | MemberAttributes.Static, APResource.APBusiness_UpdateComment);
+					CodeMemberMethod method = NewMemberMethod(updatePartialMethodName, MemberAttributes.Public | MemberAttributes.Static, APResource.APBusiness_UpdateComment);
 					ctd.Members.Add(method);
 
 					foreach (APGenColumn pk in table.PrimaryKeyColumns)
@@ -1446,7 +1448,7 @@ namespace Symber.Web.Compilation
 					CodeTryCatchFinallyStatement _try;
 					method.Statements.Add(_try = Try());
 
-					CodeMethodInvokeExpression update = MethodInvoke(PropRef(Local("db"), table.DalName), updateMethodName);
+					CodeMethodInvokeExpression update = MethodInvoke(PropRef(Local("db"), table.DalName), updatePartialMethodName);
 					foreach (APGenColumn pk in table.PrimaryKeyColumns)
 					{
 						update.Parameters.Add(ParamRef(pk.ParamName));
