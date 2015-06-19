@@ -119,13 +119,11 @@ namespace Symber.Web.APQuery.VSPackage
 			string newFileFullPath = _fullPath + ".cs";
 			using (Stream stream = File.Open(newFileFullPath, FileMode.OpenOrCreate & FileMode.Truncate))
 			{
-				using (StreamWriter writer = new StreamWriter(stream))
-				{
-					CodeDomProvider provider = CodeDomProvider.CreateProvider("cs");
-					APGen gen = APGenManager.OpenGenDocument(_fullPath);
+				StreamWriter writer = new StreamWriter(stream);
+				CodeDomProvider provider = CodeDomProvider.CreateProvider("cs");
+				APGen gen = APGenManager.OpenGenDocument(_fullPath);
 
-					provider.GenerateCodeFromCompileUnit(gen.Generate(), writer, null);
-				}
+				provider.GenerateCodeFromCompileUnit(gen.Generate(), writer, null);
 			}
 
 			var newItem = _project.ProjectItems.AddFromFile(_fullPath + ".cs");

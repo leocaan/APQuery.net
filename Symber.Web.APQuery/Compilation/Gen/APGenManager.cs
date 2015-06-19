@@ -16,7 +16,6 @@ namespace Symber.Web.Compilation
 		private static APGenFactory factory = new APGenFactory();
 		private static List<APGen> gens;
 		private static bool initData;
-		private static bool syncData;
 
 
 		#endregion

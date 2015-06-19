@@ -9,28 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSPackage", "VSPackage\VSPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Symber.Web.APQuery.Oracle", "Symber.Web.APQuery.Oracle\Symber.Web.APQuery.Oracle.csproj", "{CB4F4B64-F314-4C91-BCDC-474C1FF71484}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Tutorial(1)", "http://localhost:58257", "{18E039CD-F47A-4E0E-92FA-DBD75D849F2A}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{8dfa7c00-57c2-4d27-8bd5-b4126a27ac85}|Symber.Web.APQuery.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58257"
-		Debug.AspNetCompiler.PhysicalPath = "..\Tutorial\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58257\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58257"
-		Release.AspNetCompiler.PhysicalPath = "..\Tutorial\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58257\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\Tutorial\"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,10 +27,6 @@ Global
 		{CB4F4B64-F314-4C91-BCDC-474C1FF71484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB4F4B64-F314-4C91-BCDC-474C1FF71484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB4F4B64-F314-4C91-BCDC-474C1FF71484}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18E039CD-F47A-4E0E-92FA-DBD75D849F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18E039CD-F47A-4E0E-92FA-DBD75D849F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18E039CD-F47A-4E0E-92FA-DBD75D849F2A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{18E039CD-F47A-4E0E-92FA-DBD75D849F2A}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

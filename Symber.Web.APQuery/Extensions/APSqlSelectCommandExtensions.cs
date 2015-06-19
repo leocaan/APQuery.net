@@ -15,14 +15,25 @@ namespace Symber.Web.Data
 
 
 		/// <summary>
-		/// SQL 'SELECT' mode extensions.
+		/// SQL 'SELECT DISTINCT' mode extensions.
 		/// </summary>
 		/// <param name="command">The command.</param>
-		/// <param name="selectMode">The 'SELECT' mode.</param>
 		/// <returns>The command.</returns>
-		public static APSqlSelectCommand mode(this APSqlSelectCommand command, APSqlSelectMode selectMode)
+		public static APSqlSelectCommand distinct(this APSqlSelectCommand command)
 		{
-			command.SelectMode = selectMode;
+			command.SelectMode = APSqlSelectMode.DISTINCT;
+			return command;
+		}
+
+
+		/// <summary>
+		/// SQL 'SELECT ALL' mode extensions.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <returns>The command.</returns>
+		public static APSqlSelectCommand all(this APSqlSelectCommand command)
+		{
+			command.SelectMode = APSqlSelectMode.ALL;
 			return command;
 		}
 

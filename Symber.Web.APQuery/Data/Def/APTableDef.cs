@@ -102,24 +102,6 @@ namespace Symber.Web.Data
 		#endregion
 
 
-		#region [ Methods ]
-
-
-		/// <summary>
-		/// Create 'JOIN' phrase.
-		/// </summary>
-		/// <param name="joinType">Join Type.</param>
-		/// <param name="wherePhrase">Join 'ON' phrase.</param>
-		/// <returns>A 'FROM' phrase.</returns>
-		public APSqlFromPhrase Join(APSqlJoinType joinType, APSqlWherePhrase wherePhrase)
-		{
-			return new APSqlFromPhrase(this, joinType, wherePhrase);
-		}
-
-
-		#endregion
-
-
 		#region [ Override Implementation of Operator ]
 
 

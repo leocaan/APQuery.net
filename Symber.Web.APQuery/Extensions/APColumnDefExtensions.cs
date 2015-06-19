@@ -10,7 +10,7 @@ namespace Symber.Web.Data
 	public static class APColumnDefExtensions
 	{
 
-		#region [ APColumnDef ]
+		#region [ Set & Get Extensions ]
 
 
 		/// <summary>

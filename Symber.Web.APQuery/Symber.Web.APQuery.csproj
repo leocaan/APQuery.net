@@ -114,19 +114,20 @@
     <Compile Include="Data\SqlPhrase\IAPSqlPhrase.cs" />
     <Compile Include="Data\SqlClause\APSqlSelectClause.cs" />
     <Compile Include="Data\SqlPhrase\APSqlExprPhrase.cs" />
-    <Compile Include="Compilation\Code\Extensions\APColumnDefExtensions.cs" />
-    <Compile Include="Compilation\Code\Extensions\APSqlConditionPhraseExtersions.cs" />
-    <Compile Include="Compilation\Code\Extensions\APSqlAsteriskExprExtersions.cs">
+    <Compile Include="Extensions\APColumnDefExtensions.cs" />
+    <Compile Include="Extensions\APSqlConditionPhraseExtersions.cs" />
+    <Compile Include="Extensions\APSqlAsteriskExprExtersions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Compilation\Code\Extensions\APSqlSelectCommandExtensions.cs" />
-    <Compile Include="Compilation\Code\Extensions\APSqlUpdateCommandExtensions.cs" />
-    <Compile Include="Compilation\Code\Extensions\APSqlInsertCommandExtensions.cs" />
-    <Compile Include="Compilation\Code\Extensions\APSqlDeleteCommandExtensions.cs" />
-    <Compile Include="Compilation\Code\Extensions\APSqlOperateExprExtersions.cs">
+    <Compile Include="Extensions\APSqlSelectCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlUpdateCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlInsertCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlDeleteCommandExtensions.cs" />
+    <Compile Include="Extensions\APSqlOperateExprExtersions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Compilation\Code\Extensions\APSqlWherePhraseExtensions.cs" />
+    <Compile Include="Extensions\APSqlWherePhraseExtensions.cs" />
+    <Compile Include="Extensions\APTableDefExtensions.cs" />
     <Compile Include="Report\APRptConditionBuilder.cs" />
     <Compile Include="Report\Json\APRptJsonFilterField.cs" />
     <Compile Include="Report\Json\APRptJsonColumnTitle.cs" />
@@ -181,7 +182,7 @@
     <Compile Include="Report\Column\UrlAPRptColumn.cs" />
     <Compile Include="Report\Def\APRptViewDef.cs" />
     <Compile Include="Report\APRptSource.cs" />
-    <Compile Include="Compilation\Code\Extensions\APDatabaseExtensions.cs" />
+    <Compile Include="Extensions\APDatabaseExtensions.cs" />
     <Compile Include="Symber.Web\APCVHelper.cs" />
     <Compile Include="Symber.Web\APResource.cs" />
     <Compile Include="Compilation\Gen\APGen.cs" />
@@ -233,7 +234,7 @@
     <Compile Include="Data\APDatabase.cs" />
     <Compile Include="Data\APDataException.cs" />
     <Compile Include="Data\APEnumDictionary.cs" />
-    <Compile Include="Compilation\Code\Extensions\APQuery.cs" />
+    <Compile Include="Extensions\APQuery.cs" />
     <Compile Include="Data\APQueryParser.cs" />
     <Compile Include="Data\Def\APRelationDef.cs" />
     <Compile Include="Data\SqlExpr\APSqlAggregationType.cs" />
