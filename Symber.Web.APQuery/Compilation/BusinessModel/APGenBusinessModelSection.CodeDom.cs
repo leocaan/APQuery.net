@@ -817,6 +817,21 @@ namespace Symber.Web.Compilation
 				ctd.Members.Add(method);
 			}
 
+			// update2
+			{
+				CodeMemberMethod method = NewMemberMethod(updateMethodName, MemberAttributes.Public | MemberAttributes.Static, APResource.APBusiness_UpdateComment);
+				CodeMethodInvokeExpression call = MethodInvoke(bpl, updateMethodName);
+				method.Statements.Add(call);
+				ctd.Members.Add(method);
+				foreach (APGenColumn pk in table.PrimaryKeyColumns)
+				{
+					method.Parameters.Add(Param(pk.TypeRef, pk.ParamName));
+					call.Parameters.Add(ParamRef(pk.ParamName));
+				}
+				method.Parameters.Add(Param(ObjectType, "metadata"));
+				call.Parameters.Add(ParamRef("metadata"));
+			}
+
 			// primary delete
 			{
 				CodeMemberMethod method = NewMemberMethod(primaryDeleteMethodName, MemberAttributes.Public | MemberAttributes.Static, APResource.APBusiness_PrimaryDeleteComment);
@@ -1416,6 +1431,32 @@ namespace Symber.Web.Compilation
 				}
 				#endregion
 
+				#region [ Update(...)2 ]
+				{
+					CodeMemberMethod method = NewMemberMethod(updateMethodName, MemberAttributes.Public | MemberAttributes.Static, APResource.APBusiness_UpdateComment);
+					ctd.Members.Add(method);
+
+					foreach (APGenColumn pk in table.PrimaryKeyColumns)
+					{
+						method.Parameters.Add(Param(pk.TypeRef, pk.ParamName));
+					}
+					method.Parameters.Add(Param(ObjectType, "metadata"));
+
+					method.Statements.Add(VarDecl(DBType, "db", New(DBType)));
+					CodeTryCatchFinallyStatement _try;
+					method.Statements.Add(_try = Try());
+
+					CodeMethodInvokeExpression update = MethodInvoke(PropRef(Local("db"), table.DalName), updateMethodName);
+					foreach (APGenColumn pk in table.PrimaryKeyColumns)
+					{
+						update.Parameters.Add(ParamRef(pk.ParamName));
+					}
+					update.Parameters.Add(ParamRef("metadata"));
+
+					_try.TryStatements.Add(update);
+					_try.FinallyStatements.Add(MethodInvoke("db", "Close"));
+				}
+				#endregion
 
 				#region [ PrimaryDelete(...) ]
 				{
