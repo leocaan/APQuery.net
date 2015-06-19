@@ -70,38 +70,54 @@ Usage of ORM
 **Insert a data**
 ```
 var dep = new Department(1, 0, "Sales", "000-000-0000");
-// usage 1
 dep.Insert();
-// usage 2
-APBplDef.DepartmentBpl.Insert(dep);
 ```
 
-**	Delete a data**
+**Delete a data**
 ```
-// usage 1
 Department.PrimaryDelete(1);
-// usage 2
-APBplDef.DepartmentBpl.PrimaryDelete(1);
+```
+
+**Condition delete**
+```
+// short refer name
+var t = APDBDef.Department;
+Department.ConditionDelete(t.ParentId == 0 & t.DeptName != "Sales");
 ```
 
 **Get data with primary key and update**
 ```
-// usage 1
 var dep = Department.PrimaryGet(1);
 dep.Phone = "000-000-0001";
 dep.Update();
-//usage 2
-var dep = APBplDef.DepartmentBpl.PrimaryGet(1);
-APBplDef.DepartmentBpl.update(dep);
 ```
 
-3. Partial update
+**Partial update**
 ```
-de
+Department.UpdatePartial(1, new { Phone="000-000-5555", DeptName="New Seals"});
 ```
 
-2. Delete a data
+**Condition query and order**
 ```
+var t = APDBDef.Department;
+List<Department> list = Department.ConditionQuery(
+  t.ParentId == 0 & t.DeptName != "Sales",  // condition
+  t.DepartmentId.Desc);  // order
+```
+
+**Paging query**
+```
+var t = APDBDef.Department;
+List<Department> list = Department.ConditionQuery(
+  t.ParentId == 0 & t.DeptName != "Sales",  // condition
+  t.DepartmentId.Desc,  // order
+  20,   // take 20 records
+  20);  // skip ahead 20 records
+```
+
+**Query count**
+```
+Department.ConditionQueryCount(t.ParentId != 0);
 ```
 
 
