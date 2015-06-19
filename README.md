@@ -140,7 +140,7 @@ Usage of SQL Expression
 Sometimes the ORM can't meet our requirement, so we can directly use SQL Expression.
 Of course, the core of ORM is also dependent on SQL Expression.
 
-**SELECT DISTINCE ***
+**'SELECT DISTINCE *'**
 ```cs
 var dep = APDBDef.Department;
 using (APDBDef db = new APDBDef())
@@ -161,14 +161,16 @@ SELECT DISTINCT Department.*
 
 In the following, we only write SQL Expression.
 
-**Column alias**
+**Column Alias**
 ```cs
-APQuery.select(dep.DepartmentId, dep.DeptName.As("Name"), dep.Phone.As("Dept Phone"))
+APQuery
+   .select(dep.DepartmentId, dep.DeptName.As("Name"), dep.Phone.As("Dept Phone"))
    .from(dep);
 ```
 Execute on SQLServer provider.
 ```sql
-SELECT Department.DepartmentId, Department.DeptName AS Name, Department.Phone AS [Dept Phone]
+SELECT Department.DepartmentId, Department.DeptName AS Name,
+       Department.Phone AS [Dept Phone]
   FROM Department
 ```
 
