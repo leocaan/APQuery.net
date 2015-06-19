@@ -116,24 +116,50 @@ Department.UpdatePartial(1, new { Phone="000-000-5555", DeptName="New Seals"});
 ```cs
 var t = APDBDef.Department;
 List<Department> list = Department.ConditionQuery(
-  t.ParentId == 0 & t.DeptName != "Sales",  // condition
-  t.DepartmentId.Desc);  // order
+   t.ParentId == 0 & t.DeptName != "Sales",  // condition
+   t.DepartmentId.Desc);                     // order
 ```
 
 **Paging query**
 ```cs
 var t = APDBDef.Department;
 List<Department> list = Department.ConditionQuery(
-  t.ParentId == 0 & t.DeptName != "Sales",  // condition
-  t.DepartmentId.Desc,  // order
-  20,   // take 20 records
-  20);  // skip ahead 20 records
+   t.ParentId == 0 & t.DeptName != "Sales",  // condition
+   t.DepartmentId.Desc,                      // order
+   20, 20);       // take 20 records, skip ahead 20 records
 ```
 
 **Query count**
 ```cs
 Department.ConditionQueryCount(t.ParentId != 0);
 ```
+
+
+Usage of SQL Expression
+-----------------------
+Sometimes the ORM can't meet our requirement, so we can directly use SQL Expression.
+Of course, the core of ORM is also dependent on SQL Expression.
+
+**Simple 'SELECT'**
+```cs
+var dep = APDBDef.Department;
+using (APDBDef db = new APDBDef())
+{
+   IEnumerable<Department> result = APQuery
+      .select(dep.Asterisk)
+      .from(dep)
+      .where(dep.ParentId == 0)
+      .query(db, dep.Map);
+}
+```
+```sql
+SELECT Department.* 
+  FROM Department
+  WHERE Department.ParentId = 0
+```
+
+In the following, we only write SQL Expression.
+
 
 
 Copyright and license
