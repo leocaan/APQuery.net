@@ -16,6 +16,7 @@ namespace Symber.Web.Compilation
 		private static APGenFactory factory = new APGenFactory();
 		private static List<APGen> gens;
 		private static bool initData;
+		private static bool syncData;
 
 
 		#endregion
@@ -25,7 +26,7 @@ namespace Symber.Web.Compilation
 
 
 		/// <summary>
-		/// Initialize data
+		/// Synchronize database and initialize data.
 		/// <param name="pathOfFolderOrFile">
 		/// Path of folder or file.
 		/// 1. If the value is null, find .apgen file in '~/App_Code' virtual path.
@@ -33,12 +34,13 @@ namespace Symber.Web.Compilation
 		/// 3. If the value is folder, find .apgen file in the folder.
 		/// </param>
 		/// </summary>
-		public static void InitData(string pathOfFolderOrFile = null)
+		public static void SyncAndInitData(string pathOfFolderOrFile = null)
 		{
 			if (!initData)
 			{
 				foreach (APGen gen in APGenManager.Gens(pathOfFolderOrFile))
 				{
+					gen.SyncData();
 					gen.InitData();
 				}
 			}
@@ -59,7 +61,11 @@ namespace Symber.Web.Compilation
 				gens = new List<APGen>();
 				if (pathOfFolderOrFile == null)
 				{
-					pathOfFolderOrFile = HttpContext.Current.Server.MapPath("~/App_Code");
+					pathOfFolderOrFile = HttpContext.Current.Server.MapPath("~");
+				}
+				else if (pathOfFolderOrFile.StartsWith("~"))
+				{
+					pathOfFolderOrFile = HttpContext.Current.Server.MapPath(pathOfFolderOrFile);
 				}
 				
 				if (pathOfFolderOrFile.EndsWith(".apgen"))
@@ -74,6 +80,7 @@ namespace Symber.Web.Compilation
 					}
 				}
 			}
+
 			return gens;
 		}
 

@@ -1616,6 +1616,7 @@ namespace Symber.Web.Compilation
 		{
 			if (Enabled && AutoSyncDatabase)
 			{
+				InitPrefix();
 				ProviderInstance.Sync(this);
 			}
 		}

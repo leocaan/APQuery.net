@@ -7,7 +7,14 @@ using System.Web;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("APQuery.net")]
-[assembly: AssemblyDescription("APQuery.net is a lightweight ORM, open source framework. With the objectization of the database, SQL expression, database access layout, business logic process and data entity. Build-in the SQLServer provider.")]
+[assembly: AssemblyDescription(
+@"APQuery.net is a lightweight ORM, open source framework. With the objectization of the database,
+SQL expression, database access layout, business logic process and data entity.
+
+Source code : https://github.com/leocaan/APQuery.net
+
+Documents : http://leocaan.github.io/APQuery.net/
+")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Symber")]
 [assembly: AssemblyProduct("Symber.Web.APQuery")]
@@ -32,8 +39,8 @@ using System.Web;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("4.0.1.40437")]
-[assembly: AssemblyFileVersion("4.0.1.40437")]
+[assembly: AssemblyVersion("4.0.1.40440")]
+[assembly: AssemblyFileVersion("4.0.1.40440")]
 
 // Global code run way early in the ASP.NET pipeline as an application starts up. 
 // I mean way early, even before Application_Start. 

@@ -1,4 +1,6 @@
-﻿using System.CodeDom.Compiler;
+﻿using System;
+using System.CodeDom.Compiler;
+using System.Diagnostics;
 using System.IO;
 using System.Security;
 using System.Security.Permissions;
@@ -15,6 +17,19 @@ namespace Symber.Web.Compilation
 	public class APGenBuildProvider : BuildProvider
 	{
 
+		#region [ IsPrecompling ]
+
+
+		internal static bool IsPrecompling
+		{
+			get;
+			set;
+		}
+
+
+		#endregion
+
+
 		#region [ Global Register ]
 
 
@@ -25,11 +40,26 @@ namespace Symber.Web.Compilation
 		/// </summary>
 		public static void Register()
 		{
-			//
-			// Add ".apgen" file build provider
-			//
+			IsPrecompling = (bool)typeof(BuildManager)
+				.GetProperty("SkipTopLevelCompilationExceptions", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
+				.GetValue(null, null);
 
-			System.Web.Compilation.BuildProvider.RegisterBuildProvider(".apgen", typeof(Symber.Web.Compilation.APGenBuildProvider));
+			if (IsPrecompling)
+			{
+				//
+				// Add ".apgen" file build provider
+				//
+
+				System.Web.Compilation.BuildProvider.RegisterBuildProvider(".apgen", typeof(Symber.Web.Compilation.APGenBuildProvider));
+			}
+			else
+			{
+				//
+				// Sync database and init data.
+				//
+
+				//APGenManager.SyncAndInitData(HttpRuntime.AppDomainAppPath);
+			}
 		}
 
 
@@ -84,7 +114,7 @@ namespace Symber.Web.Compilation
 				APGen gen = APGenManager.OpenGenDocument(path);
 				CodeDomProvider provider = assemblyBuilder.CodeDomProvider;
 				provider.GenerateCodeFromCompileUnit(gen.Generate(), writer, null);
-				gen.SyncData();
+				//gen.SyncData();
 			}
 		}
 
