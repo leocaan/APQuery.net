@@ -64,6 +64,22 @@ About the .agpen file
 </businessModel>
 ```
 
+
+What objectizations does we have
+-----------------
+
+---------------------------------------------------------------------
+Entity Defined                          |   Department
+---------------------------------------------------------------------
+Database Struct Defined                 |   APDBDef.Department
+---------------------------------------------------------------------
+Data Access Layout (Dal) Defined        |   APDalDef.DepartmentDal
+---------------------------------------------------------------------
+Business Process Logic (Bpl) Defined    |   APBplDef.DepartmentBpl
+---------------------------------------------------------------------
+
+
+
 Usage of ORM
 ------------
 
@@ -74,31 +90,31 @@ dep.Insert();
 ```
 
 **Delete a data**
-```
+```cs
 Department.PrimaryDelete(1);
 ```
 
 **Condition delete**
-```
+```cs
 // short refer name
 var t = APDBDef.Department;
 Department.ConditionDelete(t.ParentId == 0 & t.DeptName != "Sales");
 ```
 
 **Get data with primary key and update**
-```
+```cs
 var dep = Department.PrimaryGet(1);
 dep.Phone = "000-000-0001";
 dep.Update();
 ```
 
 **Partial update**
-```
+```cs
 Department.UpdatePartial(1, new { Phone="000-000-5555", DeptName="New Seals"});
 ```
 
 **Condition query and order**
-```
+```cs
 var t = APDBDef.Department;
 List<Department> list = Department.ConditionQuery(
   t.ParentId == 0 & t.DeptName != "Sales",  // condition
@@ -106,7 +122,7 @@ List<Department> list = Department.ConditionQuery(
 ```
 
 **Paging query**
-```
+```cs
 var t = APDBDef.Department;
 List<Department> list = Department.ConditionQuery(
   t.ParentId == 0 & t.DeptName != "Sales",  // condition
@@ -116,7 +132,7 @@ List<Department> list = Department.ConditionQuery(
 ```
 
 **Query count**
-```
+```cs
 Department.ConditionQueryCount(t.ParentId != 0);
 ```
 
