@@ -11,6 +11,7 @@ Getting Started
 ---------------
 
 * Install package in Nuget, please search with the key "APQuery".
+* Install VS tools in https://visualstudiogallery.msdn.microsoft.com/25c365cc-31a6-43f2-b798-1250f02f9b27
 * Create and edit **business.apgen** file, this file is the ORM mapping file.
 * If you project is WebSite, ensure the file is in the **App_Code** folder will be auto generated.
 * Or if you project is WebApplication, right click context menu on the file and click **APGen Generate**
