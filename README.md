@@ -11,7 +11,7 @@ Getting Started
 ---------------
 
 * Install package in Nuget, please search with the key "APQuery".
-* Install VS tools in https://visualstudiogallery.msdn.microsoft.com/25c365cc-31a6-43f2-b798-1250f02f9b27
+* Install VS tools in VS -> Tools -> Expanded and updated, please search with the key "APQuery".
 * Create and edit **business.apgen** file, this file is the ORM mapping file.
 * If you project is WebSite, ensure the file is in the **App_Code** folder will be auto generated.
 * Or if you project is WebApplication, right click context menu on the file and click **APGen Generate**
@@ -151,7 +151,7 @@ using (APDBDef db = new APDBDef())
       .select(dep.Asterisk).distinct()
       .from(dep)
       .where(dep.ParentId == 0 & dep.Phone != null)
-		.order(dep.DeptName.Desc)
+      .order(dep.DeptName.Desc)
       .query(db, dep.Map);
 }
 ```
@@ -190,7 +190,7 @@ APQuery
 SELECT Employee.EmployeeId, Department.DeptName, Employee.Name
   FROM Department
   INNER JOIN Employee ON Department.DepartmentId == Employee.DepartmentId
-  WHERE Department.DepartmentId IN [2, 3, 4]
+  WHERE Department.DepartmentId IN ( 2, 3, 4 )
 ```
 
 **Alias table query**
