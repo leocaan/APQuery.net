@@ -10,6 +10,7 @@ SQL expression, database access layout, business logic process and data entity.
 Getting Started
 ---------------
 
+* Install package in Nuget, please search with the key "APQuery".
 * Create and edit **business.apgen** file, this file is the ORM mapping file.
 * If you project is WebSite, ensure the file is in the **App_Code** folder will be auto generated.
 * Or if you project is WebApplication, right click context menu on the file and click **APGen Generate**
@@ -314,6 +315,26 @@ APQuery
 ```sql
 DELETE Department
   WHERE Department.ParentId = 0
+```
+
+**Anonymous return**
+```cs
+var d = APDBDef.Department;
+var query = APQuery
+   .select(d.DepartmentId, d.DeptName)
+   .from(d);
+
+using (APDBDef db = new APDBDef())
+{
+   var records = db.Query(query, r =>
+   {
+      return new
+      {
+         id = d.DepartmentId.GetValue(r),
+         name = d.DeptName.GetValue(r)
+      };
+   });
+}
 ```
 
 
