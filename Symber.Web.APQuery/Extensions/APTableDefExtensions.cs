@@ -35,7 +35,7 @@ namespace Symber.Web.Data
 		/// <param name="tableDef">The table defined.</param>
 		/// <param name="wherePhrase">Join 'ON' phrase.</param>
 		/// <returns>A 'FROM' phrase.</returns>
-		public static APSqlFromPhrase LeftJoin(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
+		public static APSqlFromPhrase JoinLeft(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
 		{
 			return new APSqlFromPhrase(tableDef, APSqlJoinType.Left, wherePhrase);
 		}
@@ -47,7 +47,7 @@ namespace Symber.Web.Data
 		/// <param name="tableDef">The table defined.</param>
 		/// <param name="wherePhrase">Join 'ON' phrase.</param>
 		/// <returns>A 'FROM' phrase.</returns>
-		public static APSqlFromPhrase RightJoin(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
+		public static APSqlFromPhrase JoinRight(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
 		{
 			return new APSqlFromPhrase(tableDef, APSqlJoinType.Right, wherePhrase);
 		}
@@ -59,7 +59,7 @@ namespace Symber.Web.Data
 		/// <param name="tableDef">The table defined.</param>
 		/// <param name="wherePhrase">Join 'ON' phrase.</param>
 		/// <returns>A 'FROM' phrase.</returns>
-		public static APSqlFromPhrase InnerJoin(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
+		public static APSqlFromPhrase JoinInner(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
 		{
 			return new APSqlFromPhrase(tableDef, APSqlJoinType.Inner, wherePhrase);
 		}
@@ -71,7 +71,7 @@ namespace Symber.Web.Data
 		/// <param name="tableDef">The table defined.</param>
 		/// <param name="wherePhrase">Join 'ON' phrase.</param>
 		/// <returns>A 'FROM' phrase.</returns>
-		public static APSqlFromPhrase CrossJoin(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
+		public static APSqlFromPhrase JoinCross(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
 		{
 			return new APSqlFromPhrase(tableDef, APSqlJoinType.Cross, wherePhrase);
 		}
@@ -83,7 +83,7 @@ namespace Symber.Web.Data
 		/// <param name="tableDef">The table defined.</param>
 		/// <param name="wherePhrase">Join 'ON' phrase.</param>
 		/// <returns>A 'FROM' phrase.</returns>
-		public static APSqlFromPhrase FullJoin(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
+		public static APSqlFromPhrase JoinFull(this APTableDef tableDef, APSqlWherePhrase wherePhrase)
 		{
 			return new APSqlFromPhrase(tableDef, APSqlJoinType.Full, wherePhrase);
 		}
