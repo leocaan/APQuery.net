@@ -140,7 +140,7 @@ Usage of SQL Expression
 Sometimes the ORM can't meet our requirement, so we can directly use SQL Expression.
 Of course, the core of ORM is also dependent on SQL Expression.
 
-**'SELECT DISTINCE *'**
+**Asterisk Query**
 ```cs
 var dep = APDBDef.Department;
 using (APDBDef db = new APDBDef())
@@ -148,7 +148,8 @@ using (APDBDef db = new APDBDef())
    IEnumerable<Department> result = APQuery
       .select(dep.Asterisk).distinct()
       .from(dep)
-      .where(dep.ParentId == 0)
+      .where(dep.ParentId == 0 & dep.Phone != null)
+		.order(dep.DeptName.Desc)
       .query(db, dep.Map);
 }
 ```
@@ -156,7 +157,8 @@ Execute on SQLServer provider.
 ```sql
 SELECT DISTINCT Department.* 
   FROM Department
-  WHERE Department.ParentId = 0
+  WHERE Department.ParentId = 0 AND Department.Phone IS NOT NULL
+  ORDER BY Department.DeptName DESC
 ```
 
 In the following, we only write SQL Expression.
@@ -167,12 +169,153 @@ APQuery
    .select(dep.DepartmentId, dep.DeptName.As("Name"), dep.Phone.As("Dept Phone"))
    .from(dep);
 ```
-Execute on SQLServer provider.
 ```sql
 SELECT Department.DepartmentId, Department.DeptName AS Name,
        Department.Phone AS [Dept Phone]
   FROM Department
 ```
+
+**Multi-table query**
+```cs
+var d = APDBDef.Department;
+var e = APDBDef.Employee;
+APQuery
+   .select(e.EmployeeId, d.DeptName, e.Name)
+   .from(d, e.JoinInner(d.DepartmentId == e.DepartmentId))
+   .where(d.ParentId.NotIn(2, 3, 4));
+```
+```sql
+SELECT Employee.EmployeeId, Department.DeptName, Employee.Name
+  FROM Department
+  INNER JOIN Employee ON Department.DepartmentId == Employee.DepartmentId
+  WHERE Department.DepartmentId IN [2, 3, 4]
+```
+
+**Alias table query**
+```cs
+var d = APDBDef.Department;
+var dp = APDBDef.Department.Parent;
+APQuery
+   .select(d.DepartmentId, d.DeptName, dp.DeptName.As ("ParentName"))
+   .from(d, dp.JoinLeft(d.ParentId == dp.DepartmentId))
+   .where(dp.DeptName.Match("ale"));
+```
+```sql
+SELECT Department.DepartmentId, Department.DeptName, Parent.DeptName AS 'ParentName'
+  FROM Department
+  LEFT JOIN Department AS Parent ON Department.ParentId == Parent.DepartmentId
+  WHERE Parent.DeptName LIKE '%ale%'
+```
+
+**Subquery**
+```cs
+var d = APDBDef.Department;
+var subQuery = APQuery
+   .select(d.DepartmentId)
+   .from(d)
+   .where(d.ParentId == 0);
+APQuery
+   .select(d.Asterisk)
+   .from(d)
+   .where(subQuery.exist());
+```
+```sql
+SELECT Department.*
+  FROM Department
+  WHERE ( EXISTS (
+    SELECT Department.DepartmentId
+      FROM Department
+		WHERE Department.ParentId = 0
+  ) )
+```
+
+**Paging Query**
+```cs
+var d = APDBDef.Department;
+var e = APDBDef.Employee;
+var query = APQuery
+   .select(e.EmployeeId, e.Name, d.DeptName)
+   .from(e, d.JoinInner(e.DepartmentId == d.DepartmentId))
+   .primary(e.EmployeeId)
+   .take(20)
+   .skip(20);
+
+using (APDBDef db = new APDBDef())
+{
+   int total = db.ExecuteSizeOfSelect(query);
+   IDataReader records = db.ExecuteReader(query);
+}
+```
+Execute on SQLServer provider.
+```sql
+SELECT COUNT(*)
+  FROM Employee,
+    INNER JOIN Department ON Employee.DepartmentId = Department.DepartmentId
+
+SELECT TOP 20 Employee.EmployeeId, Employee.Name, Department.DeptName
+  FROM Employee,
+    INNER JOIN Department ON Employee.DepartmentId = Department.DepartmentId
+  WHERE Employee.EmployeeId NOT IN (
+    SELECT TOP 20 Employee.EmployeeId
+	   FROM Employee
+		  INNER JOIN Department ON Employee.DepartmentId = Department.DepartmentId
+  )
+```
+Execute on Oracle provider.
+```sql
+SELECT COUNT(*)
+  FROM Employee,
+    INNER JOIN Department ON Employee.DepartmentId = Department.DepartmentId
+
+SELECT * FROM ( SELECT query_alias.*, ROWNUM query_rownum FROM (
+  SELECT Employee.EmployeeId, Employee.Name, Department.DeptName
+    FROM Employee,
+      INNER JOIN Department ON Employee.DepartmentId = Department.DepartmentId
+  ) query_alias WHERE ROWNUM <= 40 ) WHERE query_rownum > 20)
+```
+
+
+**Insert**
+```cs
+var d = APDBDef.Department;
+APQuery
+   .insert(d)
+      .set(d.DepartmentId, 5)
+      .set(d.DeptName, "HR")
+      .set(d.Phone, "000-111-2222");
+```
+```sql
+INSERT INTO Department
+  (Department.DepartmentId, Department.DeptName, Department.Phone)
+  Values (5, 'HR', '000-111-2222')
+```
+
+**Update**
+```cs
+var d = APDBDef.Department;
+APQuery
+   .update(d)
+      .set(d.Phone, "000-111-3333")
+   .where(d.DepartmentId == 5);
+```
+```sql
+UPDATE Department
+    SET Department.Phone = '000-111-3333'
+  WHERE Department.DepartmentId = 5
+```
+
+**Delete**
+```cs
+var d = APDBDef.Department;
+APQuery
+   .delete(d)
+   .where(d.ParentId == 0);
+```
+```sql
+DELETE Department
+  WHERE Department.ParentId = 0
+```
+
 
 
 Copyright and license
