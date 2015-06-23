@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--此文件由 XML 架构设计器自动生成。它包含设计器图面组件的布局信息。-->
+<XSDDesignerLayout Style="LeftRight" layoutVersion="2" viewPortLeft="0" viewPortTop="49750" zoom="100">
+    <gen_XmlElement left="1317" top="1254" width="5292" height="2831" selected="0" zOrder="49" index="0" expanded="1" />
+    <genSections_XmlElement left="1317" top="4593" width="5292" height="2831" selected="0" zOrder="50" index="1" expanded="0" />
+    <genSectionGroup_type_XmlComplexType left="1317" top="7932" width="5292" height="2831" selected="0" zOrder="51" index="2" expanded="1">
+        <ref_x003D_genTypeDefinition_XmlGroup left="7243" top="7932" width="5292" height="2831" selected="0" zOrder="52" index="0" expanded="0" />
+    </genSectionGroup_type_XmlComplexType>
+    <genSections_type_XmlComplexType left="1317" top="11271" width="5292" height="2831" selected="0" zOrder="54" index="3" expanded="1">
+        <ref_x003D_genTypeDefinition_XmlGroup left="7243" top="11271" width="5292" height="2831" selected="0" zOrder="55" index="0" expanded="0" />
+    </genSections_type_XmlComplexType>
+    <genTypeDefinition_XmlGroup left="1317" top="16345" width="5292" height="2831" selected="0" zOrder="57" index="4" expanded="1">
+        <section_XmlElement left="7243" top="14676" width="5292" height="2831" selected="0" zOrder="58" index="0" expanded="0" />
+        <sectionGroup_XmlElement left="7243" top="18015" width="5292" height="2831" selected="0" zOrder="60" index="1" expanded="0" />
+    </genTypeDefinition_XmlGroup>
+    <genSection_section_XmlComplexType left="1317" top="21420" width="5292" height="2831" selected="0" zOrder="62" index="5" expanded="1" />
+    <Infinite_or_int_XmlSimpleType left="1317" top="24891" width="5292" height="2831" selected="0" zOrder="63" index="6" expanded="1" />
+    <Infinite_XmlSimpleType left="1317" top="28362" width="5292" height="2831" selected="0" zOrder="64" index="7" expanded="1" />
+    <small_boolean_Type_XmlSimpleType left="1317" top="31833" width="5292" height="2831" selected="0" zOrder="65" index="8" expanded="1" />
+    <rules_XmlElement left="1317" top="35304" width="5292" height="2831" selected="0" zOrder="66" index="9" expanded="1">
+        <add_XmlElement left="7243" top="35304" width="5292" height="2831" selected="0" zOrder="67" index="0" expanded="1">
+            <language_XmlAttribute left="13169" top="36362" width="5292" height="847" selected="0" zOrder="69" index="3" expanded="1">
+                <_x0028_language_x0029__XmlSimpleType left="19095" top="35304" width="5292" height="2831" selected="0" zOrder="71" index="0" expanded="1" />
+            </language_XmlAttribute>
+        </add_XmlElement>
+    </rules_XmlElement>
+    <profile_XmlElement left="1317" top="40510" width="5292" height="2831" selected="0" zOrder="73" index="10" expanded="1">
+        <properties_XmlElement left="7243" top="40510" width="5292" height="2831" selected="0" zOrder="74" index="0" expanded="1">
+            <add_XmlElement left="13169" top="38841" width="5292" height="2831" selected="0" zOrder="76" index="0" expanded="1">
+                <serializeAs_XmlAttribute left="19095" top="39899" width="5292" height="847" selected="0" zOrder="78" index="7" expanded="1">
+                    <_x0028_serializeAs_x0029__XmlSimpleType left="25021" top="38841" width="5292" height="2831" selected="0" zOrder="80" index="0" expanded="1" />
+                </serializeAs_XmlAttribute>
+            </add_XmlElement>
+            <group_XmlElement left="13169" top="42180" width="5292" height="2831" selected="0" zOrder="82" index="1" expanded="1">
+                <add_XmlElement left="19095" top="42180" width="5292" height="2831" selected="0" zOrder="84" index="0" expanded="1">
+                    <serializeAs_XmlAttribute left="25021" top="43239" width="5292" height="847" selected="0" zOrder="86" index="7" expanded="1">
+                        <_x0028_serializeAs_x0029__XmlSimpleType left="30947" top="42115" width="5292" height="2963" selected="0" zOrder="88" index="0" expanded="1" />
+                    </serializeAs_XmlAttribute>
+                </add_XmlElement>
+            </group_XmlElement>
+        </properties_XmlElement>
+    </profile_XmlElement>
+    <code_XmlElement left="1317" top="47452" width="5292" height="2831" selected="0" zOrder="20" index="11" expanded="1">
+        <namespaces_XmlElement left="7243" top="45783" width="5292" height="2831" selected="0" zOrder="90" index="0" expanded="1">
+            <add_XmlElement left="13169" top="45783" width="5292" height="2831" selected="0" zOrder="92" index="0" expanded="1" />
+        </namespaces_XmlElement>
+        <enums_XmlElement left="7243" top="49122" width="5292" height="2831" selected="0" zOrder="21" index="1" expanded="1">
+            <enum_XmlElement left="13169" top="49122" width="5292" height="2831" selected="0" zOrder="23" index="0" expanded="1">
+                <add_XmlElement left="19095" top="49122" width="5292" height="2831" selected="0" zOrder="25" index="0" expanded="1" />
+            </enum_XmlElement>
+        </enums_XmlElement>
+    </code_XmlElement>
+    <businessMode_XmlElement left="1317" top="56997" width="5292" height="2831" selected="0" zOrder="27" index="12" expanded="1">
+        <tables_XmlElement left="7243" top="54493" width="5292" height="2831" selected="0" zOrder="28" index="0" expanded="1">
+            <table_XmlElement left="13169" top="54493" width="5292" height="2831" selected="0" zOrder="30" index="0" expanded="1">
+                <columns_XmlElement left="19095" top="52824" width="5292" height="2831" selected="0" zOrder="32" index="0" expanded="1">
+                    <add_XmlElement left="25021" top="52824" width="5292" height="2831" selected="0" zOrder="34" index="0" expanded="1">
+                        <dbType_XmlAttribute left="30947" top="53816" width="5292" height="847" selected="0" zOrder="94" index="10" expanded="1">
+                            <_x0028_dbType_x0029__XmlSimpleType left="36873" top="52758" width="5292" height="2963" selected="0" zOrder="96" index="0" expanded="1" />
+                        </dbType_XmlAttribute>
+                    </add_XmlElement>
+                </columns_XmlElement>
+                <indeces_XmlElement left="19095" top="56163" width="5292" height="2831" selected="0" zOrder="36" index="1" expanded="1">
+                    <index_XmlElement left="25021" top="56163" width="5292" height="2831" selected="0" zOrder="38" index="0" expanded="1">
+                        <add_XmlElement left="30947" top="56097" width="5292" height="2963" selected="0" zOrder="98" index="0" expanded="1">
+                            <according_XmlAttribute left="36873" top="57155" width="5292" height="847" selected="0" zOrder="100" index="1" expanded="1">
+                                <_x0028_according_x0029__XmlSimpleType left="42799" top="56097" width="5292" height="2963" selected="0" zOrder="102" index="0" expanded="1" />
+                            </according_XmlAttribute>
+                        </add_XmlElement>
+                    </index_XmlElement>
+                </indeces_XmlElement>
+            </table_XmlElement>
+        </tables_XmlElement>
+		<views_XmlElement left="7243" top="54493" width="5292" height="2831" selected="0" zOrder="28" index="0" expanded="1">
+			<table_XmlElement left="13169" top="54493" width="5292" height="2831" selected="0" zOrder="30" index="0" expanded="1">
+				<columns_XmlElement left="19095" top="52824" width="5292" height="2831" selected="0" zOrder="32" index="0" expanded="1">
+					<add_XmlElement left="25021" top="52824" width="5292" height="2831" selected="0" zOrder="34" index="0" expanded="1">
+						<dbType_XmlAttribute left="30947" top="53816" width="5292" height="847" selected="0" zOrder="94" index="10" expanded="1">
+							<_x0028_dbType_x0029__XmlSimpleType left="36873" top="52758" width="5292" height="2963" selected="0" zOrder="96" index="0" expanded="1" />
+						</dbType_XmlAttribute>
+					</add_XmlElement>
+				</columns_XmlElement>
+				<indeces_XmlElement left="19095" top="56163" width="5292" height="2831" selected="0" zOrder="36" index="1" expanded="1">
+					<index_XmlElement left="25021" top="56163" width="5292" height="2831" selected="0" zOrder="38" index="0" expanded="1">
+						<add_XmlElement left="30947" top="56097" width="5292" height="2963" selected="0" zOrder="98" index="0" expanded="1">
+							<according_XmlAttribute left="36873" top="57155" width="5292" height="847" selected="0" zOrder="100" index="1" expanded="1">
+								<_x0028_according_x0029__XmlSimpleType left="42799" top="56097" width="5292" height="2963" selected="0" zOrder="102" index="0" expanded="1" />
+							</according_XmlAttribute>
+						</add_XmlElement>
+					</index_XmlElement>
+				</indeces_XmlElement>
+			</table_XmlElement>
+		</views_XmlElement>
+		<relations_XmlElement left="7243" top="59501" width="5292" height="2831" selected="0" zOrder="40" index="1" expanded="1">
+            <add_XmlElement left="13169" top="59501" width="5292" height="2831" selected="0" zOrder="42" index="0" expanded="1">
+                <cascadeType_XmlAttribute left="19095" top="60560" width="5292" height="714" selected="0" zOrder="44" index="5" expanded="1">
+                    <_x0028_cascadeType_x0029__XmlSimpleType left="25021" top="59502" width="5292" height="2831" selected="0" zOrder="46" index="0" expanded="1" />
+                </cascadeType_XmlAttribute>
+            </add_XmlElement>
+        </relations_XmlElement>
+    </businessMode_XmlElement>
+    <license_XmlElement left="7990" top="62982" width="5292" height="2831" selected="0" zOrder="48" index="13" expanded="1" />
+</XSDDesignerLayout>

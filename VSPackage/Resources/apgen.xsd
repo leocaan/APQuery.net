@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense" targetNamespace="http://schemas.symber.com/apgen" xmlns="http://schemas.symber.com/apgen">
+	<xs:element name="gen">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:any namespace="##any" processContents="lax" />
+			</xs:choice>
+			<xs:attribute name="namespace" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="genSections" type="genSections_type" />
+	<xs:complexType name="genSectionGroup_type">
+		<xs:choice>
+			<xs:group ref="genTypeDefinition" maxOccurs="unbounded" />
+		</xs:choice>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="type" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="genSections_type">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:group ref="genTypeDefinition" minOccurs="0" maxOccurs="unbounded" />
+		</xs:choice>
+	</xs:complexType>
+	<xs:group name="genTypeDefinition">
+		<xs:choice>
+			<xs:element name="section" type="genSection_section" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="sectionGroup" type="genSectionGroup_type" minOccurs="0" maxOccurs="unbounded" />
+		</xs:choice>
+	</xs:group>
+	<xs:complexType name="genSection_section">
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="type" type="xs:string" use="required" />
+	</xs:complexType>
+	<xs:simpleType name="Infinite_or_int">
+		<xs:union memberTypes="Infinite xs:int  " />
+	</xs:simpleType>
+	<xs:simpleType name="Infinite">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Infinite" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="small_boolean_Type">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="false" />
+			<xs:enumeration value="true" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="code" vs:help="gen/code">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="namespaces" vs:help="gen/code/namespaces">
+					<xs:complexType>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="add" vs:help="gen/code/namespaces/add">
+								<xs:complexType>
+									<xs:attribute name="import" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="enums" vs:help="gen/code/enums">
+					<xs:complexType>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="enum" vs:help="gen/code/enums/enum">
+								<xs:complexType>
+									<xs:choice minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="add" vs:help="gen/code/enums/enum/add">
+											<xs:complexType>
+												<xs:attribute name="name" type="xs:string" use="required" />
+												<xs:attribute name="defaultValue" type="xs:string" use="optional" />
+												<xs:attribute name="comment" type="xs:string" use="optional" />
+												<xs:attribute name="dictionaryName" type="xs:string" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:choice>
+									<xs:attribute name="name" type="xs:string" use="required" />
+									<xs:attribute name="enabled" type="small_boolean_Type" use="optional" />
+									<xs:attribute name="isFlags" type="small_boolean_Type" use="optional" />
+									<xs:attribute name="comment" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="businessModel_column">
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="columnName" type="xs:string" use="optional" />
+		<xs:attribute name="propertyName" type="xs:string" use="optional" />
+		<xs:attribute name="type" type="xs:string" use="optional" />
+		<xs:attribute name="defaultValue" type="xs:string" use="optional" />
+		<xs:attribute name="override" type="small_boolean_Type" use="optional" />
+		<xs:attribute name="isEnum" type="small_boolean_Type" use="optional" />
+		<xs:attribute name="identityType" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="None" />
+					<xs:enumeration value="Provider" />
+					<xs:enumeration value="Database" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="providerIdentityBase" type="xs:int" use="optional" />
+		<xs:attribute name="isNullable" type="small_boolean_Type" use="optional" />
+		<xs:attribute name="primaryKey" type="small_boolean_Type" use="optional" />
+		<xs:attribute name="dbType" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="AnsiString" />
+					<xs:enumeration value="Binary" />
+					<xs:enumeration value="Byte" />
+					<xs:enumeration value="Boolean" />
+					<xs:enumeration value="Currency" />
+					<xs:enumeration value="Date" />
+					<xs:enumeration value="DateTime" />
+					<xs:enumeration value="Decimal" />
+					<xs:enumeration value="Double" />
+					<xs:enumeration value="Guid" />
+					<xs:enumeration value="Int16" />
+					<xs:enumeration value="Int32" />
+					<xs:enumeration value="Int64" />
+					<xs:enumeration value="Object" />
+					<xs:enumeration value="SByte" />
+					<xs:enumeration value="Single" />
+					<xs:enumeration value="String" />
+					<xs:enumeration value="Time" />
+					<xs:enumeration value="UInt16" />
+					<xs:enumeration value="UInt32" />
+					<xs:enumeration value="UInt64" />
+					<xs:enumeration value="VarNumeric" />
+					<xs:enumeration value="AnsiStringFixedLength" />
+					<xs:enumeration value="StringFixedLength" />
+					<xs:enumeration value="Xml" />
+					<xs:enumeration value="DateTime2" />
+					<xs:enumeration value="DateTimeOffset" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="dbDefaultValue" type="xs:string" use="optional" />
+		<xs:attribute name="dataLength" type="xs:int" use="optional" />
+		<xs:attribute name="precision" type="xs:int" use="optional" />
+		<xs:attribute name="scale" type="xs:int" use="optional" />
+		<xs:attribute name="comment" type="xs:string" use="optional" />
+		<xs:attribute name="display" type="xs:string" use="optional" />
+		<xs:attribute name="required" type="small_boolean_Type" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="businessModel_index">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="add">
+				<xs:complexType>
+					<xs:attribute name="name" type="xs:string" use="required" />
+					<xs:attribute name="according" use="optional">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Asc" />
+								<xs:enumeration value="Desc" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="isDefault" type="small_boolean_Type" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="businessModel_table">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="columns">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="add" type="businessModel_column" />
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="indexes">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="index" type="businessModel_index">
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="uniques">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="index" type="businessModel_index">
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="aliases">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="add">
+							<xs:complexType>
+								<xs:attribute name="name" type="xs:string" use="required" />
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="tableName" type="xs:string" use="optional" />
+		<xs:attribute name="className" type="xs:string" use="optional" />
+		<xs:attribute name="dataInheritFromBase" type="small_boolean_Type" use="optional" />
+		<xs:attribute name="dalInheritFromBase" type="small_boolean_Type" use="optional" />
+		<xs:attribute name="bplInheritFromBase" type="small_boolean_Type" use="optional" />
+		<xs:attribute name="inherits" type="xs:string" use="optional" />
+		<xs:attribute name="comment" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:element name="businessModel" vs:help="gen/businessModel">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="provider" vs:help="gen/businessMode/provider">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string" use="required" />
+						<xs:attribute name="type" type="xs:string" use="required" />
+						<xs:attribute name="connectionString" type="xs:string" use="required" />
+						<xs:attribute name="providerName" type="xs:string" use="optional" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="tables" vs:help="gen/businessMode/tables">
+					<xs:complexType>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="table" type="businessModel_table" vs:help="gen/businessMode/tables/table">
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="views" vs:help="gen/businessMode/views">
+					<xs:complexType>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="table" type="businessModel_table" vs:help="gen/businessMode/views/table">
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="relations" vs:help="gen/businessMode/relations">
+					<xs:complexType>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="add" vs:help="gen/businessMode/relations/add">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required" />
+									<xs:attribute name="masterTable" type="xs:string" use="required" />
+									<xs:attribute name="masterColumn" type="xs:string" use="required" />
+									<xs:attribute name="slaveTable" type="xs:string" use="required" />
+									<xs:attribute name="slaveColumn" type="xs:string" use="required" />
+									<xs:attribute name="cascadeType" use="optional">
+										<xs:simpleType>
+											<xs:restriction base="xs:NMTOKEN">
+												<xs:enumeration value="None" />
+												<xs:enumeration value="Warning" />
+												<xs:enumeration value="UpdateDelete" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="comment" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:attribute name="enabled" type="small_boolean_Type" use="optional" />
+			<xs:attribute name="namespace" type="xs:string" use="optional" />
+			<xs:attribute name="dbPrefix" type="xs:string" use="optional" />
+			<xs:attribute name="defPrefix" type="xs:string" use="optional" />
+			<xs:attribute name="providerName" type="xs:string" use="optional" />
+			<xs:attribute name="mainPart" type="small_boolean_Type" use="optional" />
+			<xs:attribute name="autoSyncDatabase" type="small_boolean_Type" use="optional" />
+			<xs:attribute name="autoInitDatabase" type="small_boolean_Type" use="optional" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

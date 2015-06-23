@@ -7,45 +7,62 @@
 
 
 
-	<Commands package="guidAPGenPkg">
+	<Commands package="guidPkg">
 		<Groups>
-			<Group guid="guidAPGenCmdSet" id="groupAPGen" priority="0x0600">
+			<Group guid="guidCmdSet" id="groupCmdSet" priority="0x0600">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+			</Group>
+			<Group guid="guidCmdSet" id="groupCmdSetFolder" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE"/>
 			</Group>
 		</Groups>
 
 		<Buttons>
-			<Button guid="guidAPGenCmdSet" id="cmdidBuildAPGen" priority="0x0100" type="Button">
-				<Parent guid="guidAPGenCmdSet" id="groupAPGen" />
+			<Button guid="guidCmdSet" id="cmdidGenerate" priority="0x0100" type="Button">
+				<Parent guid="guidCmdSet" id="groupCmdSet" />
 				<Icon guid="guidBuildCmdIcons" id="3"/>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings language="en">
-					<ButtonText>APGen Generate</ButtonText>
+					<ButtonText>Generate the .apgen file</ButtonText>
 				</Strings>
 				<Strings language="zh-CHS">
-					<ButtonText>APGen 生成</ButtonText>
+					<ButtonText>生成 .apgen 文件</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="guidCmdSet" id="cmdidNewGen" priority="0x0200" type="Button">
+				<Parent guid="guidCmdSet" id="groupCmdSetFolder" />
+				<Icon guid="guidBuildCmdIcons" id="3"/>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings language="en">
+					<ButtonText>Add new .apgen file</ButtonText>
+				</Strings>
+				<Strings language="zh-CHS">
+					<ButtonText>新建 .apgen 文件</ButtonText>
 				</Strings>
 			</Button>
 		</Buttons>
 	</Commands>
 
 	<CommandPlacements>
-		<CommandPlacement guid="guidAPGenCmdSet" id="groupAPGen" priority="0x0010">
+		<CommandPlacement guid="guidCmdSet" id="groupCmdSet" priority="0x0010">
 			<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBITEMNODE"/>
 		</CommandPlacement>
 	</CommandPlacements>
 
 
 
-		<Symbols>
+	<Symbols>
 		<!-- This is the package guid. -->
-		<GuidSymbol name="guidAPGenPkg" value="{560c3499-b182-4175-83b0-3809c72675a6}" />
+		<GuidSymbol name="guidPkg" value="{560c3499-b182-4175-83b0-3809c72675a6}" />
 
 		<!-- This is the guid used to group the menu commands together -->
-		<GuidSymbol name="guidAPGenCmdSet" value="{d78cf03f-bf8f-44a8-8733-7b4bcc8fda10}">
+		<GuidSymbol name="guidCmdSet" value="{d78cf03f-bf8f-44a8-8733-7b4bcc8fda10}">
 
-			<IDSymbol name="groupAPGen" value="0x1020" />
-			<IDSymbol name="cmdidBuildAPGen" value="0x0100" />
+			<IDSymbol name="groupCmdSet" value="0x1020" />
+			<IDSymbol name="groupCmdSetFolder" value="0x1030" />
+			<IDSymbol name="cmdidGenerate" value="0x0100" />
+			<IDSymbol name="cmdidNewGen" value="0x0200" />
 		</GuidSymbol>
 	</Symbols>
 

@@ -8,6 +8,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -17,13 +18,14 @@ namespace Symber.Web.APQuery.VSPackage
 	[InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
 	[ProvideMenuResource("Menus.ctmenu", 1)]
 	[ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-	[Guid(GuidList.guidAPGenPkgString)]
+	[Guid(GuidList.guidPkgString)]
 	public sealed class VSPackagePackage : Package
 	{
 		private DTE2 _dte;
 		private string _fullPath;
 		private string _fileName;
 		private OleMenuCommand _cmdGenerate;
+		private OleMenuCommand _cmdNewGen;
 		private EnvDTE.Project _project;
 
 		public VSPackagePackage()
@@ -40,24 +42,27 @@ namespace Symber.Web.APQuery.VSPackage
 			OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
 			if (null != mcs)
 			{
-				CommandID menuCommandID = new CommandID(GuidList.guidAPGenCmdSet, (int)PkgCmdIDList.cmdidMyCommand);
-				_cmdGenerate = new OleMenuCommand(MenuItemCallback, menuCommandID);
-				//_cmdGenerate. = Resources.Resources.APGen_Generate_MenuItem_Text;
-				_cmdGenerate.BeforeQueryStatus += BeforeButtonClicked;
+				_cmdGenerate = new OleMenuCommand(ItemNodeCallback, new CommandID(GuidList.guidCmdSet, (int)PkgCmdIDList.cmdidGenerate));
+				_cmdGenerate.BeforeQueryStatus += BeforeItemNodeClicked;
 				mcs.AddCommand(_cmdGenerate);
+
+
+				_cmdNewGen = new OleMenuCommand(FolderNodeCallback, new CommandID(GuidList.guidCmdSet, (int)PkgCmdIDList.cmdidNewGen));
+				_cmdNewGen.BeforeQueryStatus += BeforeFolderNodeClicked;
+				mcs.AddCommand(_cmdNewGen);
 			}
 		}
 
 		protected override void Dispose(bool disposing)
 		{
 			if (_cmdGenerate != null)
-				_cmdGenerate.BeforeQueryStatus -= BeforeButtonClicked;
+				_cmdGenerate.BeforeQueryStatus -= BeforeItemNodeClicked;
 
 			base.Dispose(disposing);
 		}
 
 
-		void BeforeButtonClicked(object sender, EventArgs e)
+		void BeforeItemNodeClicked(object sender, EventArgs e)
 		{
 			OleMenuCommand button = sender as OleMenuCommand;
 			button.Visible = false;
@@ -68,7 +73,7 @@ namespace Symber.Web.APQuery.VSPackage
 			if (string.IsNullOrEmpty(_fullPath))
 				return;
 
-			if (File.Exists(_fullPath))
+			else if (File.Exists(_fullPath))
 			{
 				if (Path.GetExtension(_fullPath) == ".apgen")
 					button.Visible = true;
@@ -76,7 +81,25 @@ namespace Symber.Web.APQuery.VSPackage
 		}
 
 
-		private void MenuItemCallback(object sender, EventArgs e)
+		void BeforeFolderNodeClicked(object sender, EventArgs e)
+		{
+			OleMenuCommand button = sender as OleMenuCommand;
+			button.Visible = false;
+
+
+			GetSelectedItemPath();
+
+			if (string.IsNullOrEmpty(_fullPath))
+				return;
+
+			if (Directory.Exists(_fullPath))
+			{
+				button.Visible = true;
+			}
+		}
+
+
+		private void ItemNodeCallback(object sender, EventArgs e)
 		{
 			//DynamicTypeService typeService;
 			//IVsSolution solution;
@@ -115,9 +138,8 @@ namespace Symber.Web.APQuery.VSPackage
 			//	}
 			//}
 
-
 			string newFileFullPath = _fullPath + ".cs";
-			using (Stream stream = File.Open(newFileFullPath, FileMode.OpenOrCreate & FileMode.Truncate))
+			using (Stream stream = File.Open(newFileFullPath, FileMode.Create))
 			{
 				StreamWriter writer = new StreamWriter(stream);
 				CodeDomProvider provider = CodeDomProvider.CreateProvider("cs");
@@ -126,11 +148,58 @@ namespace Symber.Web.APQuery.VSPackage
 				provider.GenerateCodeFromCompileUnit(gen.Generate(), writer, null);
 			}
 
-			var newItem = _project.ProjectItems.AddFromFile(_fullPath + ".cs");
-
-			MessageBox.Show(String.Format(Resources.APGen_General_Success, _fileName));
-
+			var newItem = _project.ProjectItems.AddFromFile(newFileFullPath);
 			newItem.Open().Visible = true;
+		}
+
+
+		private void FolderNodeCallback(object sender, EventArgs e)
+		{
+			string newFileFullPath = _fullPath + "Business.apgen";
+
+			CopyResourceFile("Business.apgen", newFileFullPath);
+			InsureSchema();
+
+			var newItem = _project.ProjectItems.AddFromFile(newFileFullPath);
+			newItem.Open().Visible = true;
+		}
+
+
+		private void InsureSchema()
+		{
+			var rootPath = Path.GetDirectoryName(_project.FullName);
+			var schemaPath = Path.Combine(rootPath, "xml.schema.definition");
+
+
+			if (!Directory.Exists(schemaPath))
+				Directory.CreateDirectory(schemaPath);
+			_project.ProjectItems.AddFromDirectory(schemaPath);
+
+
+			var schemaName = Path.Combine(schemaPath, "apgen.xsd");
+			CopyResourceFile("apgen.xsd", schemaName);
+			_project.ProjectItems.AddFromFile(schemaName);
+
+			schemaName = Path.Combine(schemaPath, "apgen.xsx");
+			CopyResourceFile("apgen.xsx", schemaName);
+			_project.ProjectItems.AddFromFile(schemaName);
+		}
+
+		private void CopyResourceFile(string resourceName, string path)
+		{
+			var ns = "Symber.Web.APQuery.VSPackage.Resources.";
+			var resource = GetType().Assembly.GetManifestResourceStream(ns + resourceName);
+
+			string content = new StreamReader(resource).ReadToEnd();
+		
+			using (Stream stream = File.Open(path, FileMode.Create))
+			{
+				StreamWriter writer = new StreamWriter(stream);
+
+				writer.Write(content);
+				writer.Flush();
+				writer.Close();
+			}
 		}
 
 
@@ -142,7 +211,6 @@ namespace Symber.Web.APQuery.VSPackage
 				foreach (UIHierarchyItem selItem in items)
 				{
 					var item = selItem.Object as ProjectItem;
-
 					if (item != null && item.Properties != null)
 					{
 						_project = item.ContainingProject;

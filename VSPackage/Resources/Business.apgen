@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<gen xmlns="http://schemas.symber.com/apgen">
+	<genSections>
+		<sectionGroup name="code" type="Symber.Web.Compilation.APGenCodeSectionGroup, Symber.Web.APQuery, Version=4.0, Culture=neutral, PublicKeyToken=5f8081ae21b51971">
+			<section name="namespaces" type="Symber.Web.Compilation.APGenNamespacesSection, Symber.Web.APQuery, Version=4.0, Culture=neutral, PublicKeyToken=5f8081ae21b51971"/>
+			<section name="enums" type="Symber.Web.Compilation.APGenEnumsSection, Symber.Web.APQuery, Version=4.0, Culture=neutral, PublicKeyToken=5f8081ae21b51971"/>
+		</sectionGroup>
+		<section name="businessModel" type="Symber.Web.Compilation.APGenBusinessModelSection, Symber.Web.APQuery, Version=4.0, Culture=neutral, PublicKeyToken=5f8081ae21b51971"/>
+	</genSections>
+
+
+
+
+	<!-- Add APQuery.net Project Gen Code Here. -->
+
+	<!-- Like as -->
+	<code>
+		<namespaces>
+			<add import="System"/>
+			<add import="System.Collections"/> 
+			<add import="System.Collections.Generic"/>
+		</namespaces>
+		<enums>
+			<enum name="DemoEnum" comment="Demo Enum">
+				<add name="Debug" comment="For Debug"/>
+				<add name="Release" comment="For Release"/>
+			</enum>
+		</enums>
+	</code>
+
+
+
+	<!-- Add APQuery.net Project Business Logic Here. -->
+	<!-- Like as -->
+	<businessModel autoSyncDatabase="false" autoInitDatabase="false">
+		<provider
+			  name="DefaultAPDalProvider"
+			  type="Symber.Web.Data.SqlAPDalProvider"
+			  connectionString="Data Source=.;Initial Catalog=Demo;User ID=sa;Password=sa"
+			  providerName="System.Data.SqlClient"/>
+
+		<tables>
+
+			<table name="Department" comment="Departments of company">
+				<columns>
+					<add name="DepartmentId" type="int" primaryKey="true" identityType="Provider"/>
+					<add name="ParentId" type="int" comment="Parent DepartmentId"/>
+					<add name="DeptName" type="string" dataLength="20"/>
+					<add name="Phone" type="string" dataLength="20"/>
+				</columns>
+				<uniques>
+					<index name="IX_Department_DeptName">
+						<add name="DeptName" according="Asc"/>
+					</index>
+				</uniques>
+				<aliases>
+					<add name="Parent"/>
+				</aliases>
+			</table>
+
+			<table name="Employee" comment="Employees of company">
+				<columns>
+					<add name="EmployeeId" type="int" primaryKey="true" identityType="Provider"/>
+					<add name="DepartmentId" type="int" comment="Employee's DeparentId"/>
+					<add name="Name" type="string" dataLength="30"/>
+					<add name="Birthday" type="DateTime"/>
+					<add name="Email" type="string" dataLength="255"/>
+				</columns>
+				<indexes>
+					<index name="IX_Employee_Name" isDefault="true">
+						<add name="Name" according="Asc"/>
+					</index>
+				</indexes>
+			</table>
+
+		</tables>
+
+
+		<relations>
+
+			<add name="Department_Employee"
+				  masterTable="Department" masterColumn="DepartmentId"
+				  slaveTable="Employee" slaveColumn="DepartmentId"
+				  cascadeType="Warning" comment="Relationship of Department and Employee with field DepartmentId."/>
+
+		</relations>
+
+	</businessModel>
+
+</gen>

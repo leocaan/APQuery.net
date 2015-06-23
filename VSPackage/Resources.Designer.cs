@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Symber.Web.APQuery.VSPackage
-{
-
-
-	/// <summary>
+namespace Symber.Web.APQuery.VSPackage {
+    using System;
+    
+    
+    /// <summary>
     ///   一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>
     // 此类是由 StronglyTypedResourceBuilder
