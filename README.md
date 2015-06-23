@@ -12,12 +12,20 @@ Getting Started
 
 * Install package in Nuget, please search with the key "APQuery".
 * Install Add-in at VS menu -> Tools -> Expanded and updated, please search with the key "APQuery".
-[![](http://i58.tinypic.com/jp79c2.jpg)](http://i58.tinypic.com/jp79c2.jpg)
+
+[![](http://i57.tinypic.com/69422t.jpg)](http://i57.tinypic.com/69422t.jpg)
+
 * Right click contextmenu on the project folder and click **Add new .apgen file**
   to create a **business.apgen** file, this file is the ORM mapping file.
+
+[![](http://i61.tinypic.com/352iv4k.jpg)](http://i61.tinypic.com/352iv4k.jpg)
+
 * If you project is WebSite, ensure the file is in the **App_Code** folder will be auto generated.
 * Or if you project is WebApplication, right click context menu on the file and click
   **Generate the .apgen file** item will be generated **business.apgen.cs** in project.
+
+[![](http://i57.tinypic.com/20fu8wh.jpg)](http://i57.tinypic.com/20fu8wh.jpg)
+
 * Edit **Global.asax**, add **Symber.Web.Compilation.APGenManager.SyncAndInitData();** in the
   **Application_Start** method, that will be automatically create and maintain the DATABASE and
   initialization data.
