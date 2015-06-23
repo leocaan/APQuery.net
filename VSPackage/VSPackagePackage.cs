@@ -24,6 +24,7 @@ namespace Symber.Web.APQuery.VSPackage
 		private DTE2 _dte;
 		private string _fullPath;
 		private string _fileName;
+		private bool _vsWebsite;
 		private OleMenuCommand _cmdGenerate;
 		private OleMenuCommand _cmdNewGen;
 		private EnvDTE.Project _project;
@@ -72,6 +73,8 @@ namespace Symber.Web.APQuery.VSPackage
 
 			if (string.IsNullOrEmpty(_fullPath))
 				return;
+			if (_vsWebsite)
+				return;
 
 			else if (File.Exists(_fullPath))
 			{
@@ -94,6 +97,13 @@ namespace Symber.Web.APQuery.VSPackage
 
 			if (Directory.Exists(_fullPath))
 			{
+				if (_vsWebsite)
+				{
+					var appcode = _project.Properties.Item("FullPath").Value.ToString() + "\\App_Code";
+					if (!_fullPath.StartsWith(appcode))
+						return;
+				}
+
 				button.Visible = true;
 			}
 		}
@@ -155,7 +165,7 @@ namespace Symber.Web.APQuery.VSPackage
 
 		private void FolderNodeCallback(object sender, EventArgs e)
 		{
-			string newFileFullPath = _fullPath + "Business.apgen";
+			string newFileFullPath = GetNewFileName();
 
 			CopyResourceFile("Business.apgen", newFileFullPath);
 			InsureSchema();
@@ -164,10 +174,28 @@ namespace Symber.Web.APQuery.VSPackage
 			newItem.Open().Visible = true;
 		}
 
+		private string GetNewFileName()
+		{
+			int i = 0;
+			while (true)
+			{
+				string filename = (i == 0)
+					? "Business.apgen"
+					: String.Format("Business{0}.apgen", i);
+				string fullName = _fullPath + filename;
+				if (!File.Exists(fullName))
+					return fullName;
+				i++;
+			}
+		}
+
 
 		private void InsureSchema()
 		{
-			var rootPath = Path.GetDirectoryName(_project.FullName);
+
+			var rootPath = !_vsWebsite
+				? Path.GetDirectoryName(_project.FullName)
+				: _project.Properties.Item("FullPath").Value.ToString();
 			var schemaPath = Path.Combine(rootPath, "xml.schema.definition");
 
 
@@ -214,6 +242,7 @@ namespace Symber.Web.APQuery.VSPackage
 					if (item != null && item.Properties != null)
 					{
 						_project = item.ContainingProject;
+						_vsWebsite = _project.Kind == "{E24C65DC-7377-472b-9ABA-BC803B73C61A}";
 						_fullPath = item.Properties.Item("FullPath").Value.ToString();
 						_fileName = item.Properties.Item("FileName").Value.ToString();
 					}
