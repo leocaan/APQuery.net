@@ -12,7 +12,7 @@ Getting Started
 
 * Install package in Nuget, please search with the key "APQuery".
 * Install Add-in at VS menu -> Tools -> Expanded and updated, please search with the key "APQuery".
-[![](http://oi58.tinypic.com/23ws8kn.jpg)](http://oi58.tinypic.com/23ws8kn.jpg)
+[![](http://i58.tinypic.com/jp79c2.jpg)](http://i58.tinypic.com/jp79c2.jpg)
 * Right click contextmenu on the project folder and click **Add new .apgen file**
   to create a **business.apgen** file, this file is the ORM mapping file.
 * If you project is WebSite, ensure the file is in the **App_Code** folder will be auto generated.
