@@ -147,6 +147,26 @@ List<Department> list = Department.ConditionQuery(
 Department.ConditionQueryCount(t.ParentId != 0);
 ```
 
+**Transcation and Dal**
+```cs
+using (APDBDef db = new APDBDef())
+{
+   db.BeginTrans();
+
+   try
+   {
+      db.DepartmentDal.PrimaryDelete(1);
+      db.EmployeeDal.ConditionDelete(APDBDef.Employee.DepartmentId == 1);
+
+      db.Commit();
+   }
+   catch
+   {
+      db.Rollback();
+   }
+}
+```
+
 
 Usage of SQL Expression
 -----------------------
