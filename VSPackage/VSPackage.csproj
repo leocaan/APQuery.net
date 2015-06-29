@@ -156,9 +156,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\apgen.xsd">
+    <None Include="Resources\apgen.xsd">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </None>
     <EmbeddedResource Include="Resources\apgen.xsx">
       <DependentUpon>apgen.xsd</DependentUpon>
     </EmbeddedResource>

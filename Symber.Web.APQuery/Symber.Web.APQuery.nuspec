@@ -10,7 +10,7 @@
 		<projectUrl>https://github.com/leocaan/APQuery.net</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
-		<releaseNotes>First release.</releaseNotes>
+		<releaseNotes>Add some extensions.</releaseNotes>
 		<copyright>Copyright 2015</copyright>
 		<tags>APQuery.net ORM</tags>
 	</metadata>

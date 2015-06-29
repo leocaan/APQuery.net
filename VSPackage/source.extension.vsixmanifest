@@ -7,7 +7,7 @@
 Right click extension to add .apgen and generate code commands in Visual Studio.</Description>
 		<MoreInfo>https://github.com/leocaan/APQuery.net</MoreInfo>
 		<License>Resources\LICENSE.txt</License>
-		<ReleaseNotes>https://github.com/leocaan/APQuery.net/release</ReleaseNotes>
+		<ReleaseNotes>https://github.com/leocaan/APQuery.net/releases</ReleaseNotes>
 		<Tags>APQuery, APQuery.net</Tags>
 	</Metadata>
 	<Installation InstalledByMsi="false">
