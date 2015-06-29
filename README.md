@@ -10,8 +10,9 @@ SQL expression, database access layout, business logic process and data entity.
 Getting Started
 ---------------
 
-* Install package in Nuget, please search with the key "APQuery".
-* Install Add-in at VS menu -> Tools -> Expanded and updated, please search with the key "APQuery".
+* Install **APQuery.net Library Package** from **Nuget**, search as the key "APQuery".
+* Install **APQuery.net Add-in** from **Expanded and updated**, 
+  Visual Studio Menu -> Tools -> Expanded and updated, search as the key "APQuery".
 
 [![](http://i57.tinypic.com/16iv2j9.jpg)](http://i57.tinypic.com/16iv2j9.jpg)
 
