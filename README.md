@@ -6,6 +6,8 @@ SQL expression, database access layout, business logic process and data entity.
 
 **<font size="+1">Home page, documentation, and support links: http://leocaan.github.io/APQuery.net/</font>**
 
+**<font size="+1">Some demos will be links: https://github.com/leocaan/APQuery.net-Demo/</font>**
+
 
 Getting Started
 ---------------
