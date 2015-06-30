@@ -592,7 +592,8 @@ namespace Symber.Web.Data
 					else
 						isFirst = false;
 
-					writer.Write(phrase.Expr.SelectExpr);
+					WriteSelectExpression(writer, phrase.Expr);
+					//writer.Write(phrase.Expr.SelectExpr);
 
 					phrase = phrase.Next as APSqlExprPhrase;
 				}
