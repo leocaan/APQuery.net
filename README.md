@@ -307,6 +307,15 @@ SELECT * FROM ( SELECT query_alias.*, ROWNUM query_rownum FROM (
   ) query_alias WHERE ROWNUM <= 40 ) WHERE query_rownum > 20)
 ```
 
+**Aggregation & Group By**
+```sql
+var t = APDBDef.Department;
+APQuery
+   .select(t.DepartmentId, t.DepartmentId.Count())
+   .from(t)
+   .group_by(t.DepartmentId)
+   .having(t.ParentId != 0);
+```
 
 **Insert**
 ```cs
