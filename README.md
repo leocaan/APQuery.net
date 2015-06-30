@@ -308,14 +308,47 @@ SELECT * FROM ( SELECT query_alias.*, ROWNUM query_rownum FROM (
 ```
 
 **Aggregation & Group By**
-```sql
+```cs
 var t = APDBDef.Department;
+var e = APDBDef.Employee;
 APQuery
-   .select(t.DepartmentId, t.DepartmentId.Count())
-   .from(t)
-   .group_by(t.DepartmentId)
-   .having(t.ParentId != 0);
+   .select(t.DepartmentId, t.DeptName, e.EmployeeId.Count())
+   .from(t, e.JoinLeft(t.DepartmentId == e.DepartmentId))
+   .group_by(t.DepartmentId, t.DeptName, e.EmployeeId)
+   .having(e.EmployeeId.Count() > 0);
 ```
+```sql
+SELECT Department.DepartmentId, Department.DeptName, COUNT(Employee.EmployeeId)
+FROM Department
+     LEFT JOIN Employee ON Department.DepartmentId = Employee.DepartmentId
+GROUP BY Department.DepartmentId, Department.DeptName, Employee.EmployeeId
+HAVING COUNT(Employee.EmployeeId) > 0
+```
+
+**Aggregation with Date**
+```cs
+var t = APDBDef.Employee;
+APQuery
+   .select(t.Birthday.DateGroup(APSqlDateGroupMode.Month),
+	   new APSqlAggregationExpr(t.Birthday.DateGroup(APSqlDateGroupMode.Month), APSqlAggregationType.COUNT)))
+   .from(t)
+   .group_by(t.Birthday.DateGroup(APSqlDateGroupMode.Month));
+```
+Execute on SQLServer provider.
+```sql
+SELECT DATEADD( mm, DATEDIFF( mm, 0, Employee.Birthday ), 0 ),
+   COUNT( DATEADD( mm, DATEDIFF( mm, 0, Employee.Birthday ), 0 ) )
+   FROM Employee
+   GROUP BY DATEADD( mm, DATEDIFF( mm, 0, Employee.Birthday ), 0 )
+```
+Execute on Oracle provider.
+```sql
+SELECT to_char(Employee.Birthday, 'yyyy-mm' ),
+   COUNT( to_char(Employee.Birthday, 'yyyy-mm' ) )
+   FROM Employee
+   GROUP BY to_char(Employee.Birthday, 'yyyy-mm' )
+```
+
 
 **Insert**
 ```cs
