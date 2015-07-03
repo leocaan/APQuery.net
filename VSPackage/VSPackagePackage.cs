@@ -156,6 +156,8 @@ namespace Symber.Web.APQuery.VSPackage
 				APGen gen = APGenManager.OpenGenDocument(_fullPath);
 
 				provider.GenerateCodeFromCompileUnit(gen.Generate(), writer, null);
+				writer.Flush();
+				writer.Close();
 			}
 
 			var newItem = _project.ProjectItems.AddFromFile(newFileFullPath);
