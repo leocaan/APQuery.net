@@ -736,6 +736,7 @@ namespace Symber.Web.Data
 			{
 				WriteDelete(writer, command);
 				writer.Idented++;
+				WriteFrom(writer, command.FromClause, dbCmd);
 				WriteWhere(writer, command.WhereClause, dbCmd);
 			}
 

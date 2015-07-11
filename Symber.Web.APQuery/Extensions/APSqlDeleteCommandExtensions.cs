@@ -9,6 +9,132 @@ namespace Symber.Web.Data
 	public static class APSqlDeleteCommandExtensions
 	{
 
+		#region [ 'FROM' Extensions ]
+
+
+		/// <summary>
+		/// SQL 'FROM' clause extensions.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <param name="clause">The 'FROM' clause.</param>
+		/// <returns>The command.</returns>
+		public static APSqlDeleteCommand from(this APSqlDeleteCommand command, APSqlFromClause clause)
+		{
+			command.FromClause = clause;
+			return command;
+		}
+
+
+		/// <summary>
+		/// SQL 'FROM' clause extensions.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <param name="phrase">The 'FROM' phrase.</param>
+		/// <returns>The command.</returns>
+		public static APSqlDeleteCommand from(this APSqlDeleteCommand command, APSqlFromPhrase phrase)
+		{
+			command.FromClause = new APSqlFromClause(phrase);
+			return command;
+		}
+
+
+		/// <summary>
+		/// SQL 'FROM' clause extensions.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <param name="phrases">The 'FROM' phrases.</param>
+		/// <returns>The command.</returns>
+		public static APSqlDeleteCommand from(this APSqlDeleteCommand command, params APSqlFromPhrase[] phrases)
+		{
+			if (phrases != null && phrases.Length != 0)
+				command.FromClause = new APSqlFromClause(phrases);
+			return command;
+		}
+
+
+		/// <summary>
+		/// SQL 'FROM' clause extensions.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <param name="phrases">The 'FROM' phrases.</param>
+		/// <returns>The command.</returns>
+		public static APSqlDeleteCommand from(this APSqlDeleteCommand command, IEnumerable<APSqlFromPhrase> phrases)
+		{
+			if (phrases != null)
+				command.FromClause = new APSqlFromClause(phrases);
+			return command;
+		}
+
+
+		/// <summary>
+		/// SQL 'FROM' clause extensions. Add new 'FROM' in clause.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <param name="phrase">The 'FROM' phrase.</param>
+		/// <returns>The command.</returns>
+		public static APSqlDeleteCommand from_add(this APSqlDeleteCommand command, APSqlFromPhrase phrase)
+		{
+			if (command.FromClause == null || command.FromClause.Next == null)
+			{
+				command.FromClause = new APSqlFromClause(phrase);
+			}
+			else
+			{
+				APSqlFromPhrase exist = command.FromClause.Last as APSqlFromPhrase;
+				exist.SetNext(phrase);
+			}
+
+			return command;
+		}
+
+
+		/// <summary>
+		/// SQL 'FROM' clause extensions. Add new 'FROM' in clause.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <param name="phrases">The 'FROM' phrases.</param>
+		/// <returns>The command.</returns>
+		public static APSqlDeleteCommand from_add(this APSqlDeleteCommand command, params APSqlFromPhrase[] phrases)
+		{
+			if (command.FromClause == null || command.FromClause.Next == null)
+			{
+				command.FromClause = new APSqlFromClause(phrases);
+			}
+			else
+			{
+				APSqlFromPhrase exist = command.FromClause.Last as APSqlFromPhrase;
+				exist.SetNext(phrases);
+			}
+
+			return command;
+		}
+
+
+		/// <summary>
+		/// SQL 'FROM' clause extensions. Add new 'FROM' in clause.
+		/// </summary>
+		/// <param name="command">The command.</param>
+		/// <param name="phrases">The 'FROM' phrases.</param>
+		/// <returns>The command.</returns>
+		public static APSqlDeleteCommand from_add(this APSqlDeleteCommand command, IEnumerable<APSqlFromPhrase> phrases)
+		{
+			if (command.FromClause == null || command.FromClause.Next == null)
+			{
+				command.FromClause = new APSqlFromClause(phrases);
+			}
+			else
+			{
+				APSqlFromPhrase exist = command.FromClause.Last as APSqlFromPhrase;
+				exist.SetNext(phrases);
+			}
+
+			return command;
+		}
+
+
+		#endregion
+
+
 		#region [ 'WHERE' Extensions ]
 
 

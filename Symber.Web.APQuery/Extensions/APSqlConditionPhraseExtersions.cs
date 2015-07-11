@@ -29,7 +29,6 @@ namespace Symber.Web.Data
 		/// Set subquery condition phrase 'ALL' scalar.
 		/// </summary>
 		/// <param name="phrase">The condition phrase.</param>
-		/// <param name="scalar">The scalar of subquery.</param>
 		/// <returns>The condition phrase.</returns>
 		public static APSqlConditionPhrase ScalarAll(this APSqlConditionPhrase phrase)
 		{
@@ -43,7 +42,6 @@ namespace Symber.Web.Data
 		/// Set subquery condition phrase 'ANY' scalar.
 		/// </summary>
 		/// <param name="phrase">The condition phrase.</param>
-		/// <param name="scalar">The scalar of subquery.</param>
 		/// <returns>The condition phrase.</returns>
 		public static APSqlConditionPhrase ScalarAny(this APSqlConditionPhrase phrase)
 		{
@@ -57,7 +55,6 @@ namespace Symber.Web.Data
 		/// Set subquery condition phrase 'SOME' scalar.
 		/// </summary>
 		/// <param name="phrase">The condition phrase.</param>
-		/// <param name="scalar">The scalar of subquery.</param>
 		/// <returns>The condition phrase.</returns>
 		public static APSqlConditionPhrase ScalarSome(this APSqlConditionPhrase phrase)
 		{

@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Symber.Web.APQuery", "Symbe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Symber.Web.APQuery.Oracle", "Symber.Web.APQuery.Oracle\Symber.Web.APQuery.Oracle.csproj", "{CB4F4B64-F314-4C91-BCDC-474C1FF71484}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E62A26B0-8664-419A-84D8-D032E64080AD}"
+	ProjectSection(SolutionItems) = preProject
+		IntegrationTests.testsettings = IntegrationTests.testsettings
+		UnitTests.testsettings = UnitTests.testsettings
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSPackage", "VSPackage\VSPackage.csproj", "{D7ED280A-1851-452A-8E52-9244D999EFAA}"
 EndProject
 Global

@@ -39,8 +39,8 @@ Documents : http://leocaan.github.io/APQuery.net/
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("4.0.2.1")]
-[assembly: AssemblyFileVersion("4.0.2.1")]
+[assembly: AssemblyVersion("4.0.2.2")]
+[assembly: AssemblyFileVersion("4.0.2.2")]
 
 // Global code run way early in the ASP.NET pipeline as an application starts up. 
 // I mean way early, even before Application_Start. 

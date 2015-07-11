@@ -13,6 +13,7 @@ namespace Symber.Web.Data
 
 
 		private APTableDef _tableDef;
+		private APSqlFromClause _fromClause;
 		private APSqlWhereClause _whereClause;
 
 
@@ -46,6 +47,16 @@ namespace Symber.Web.Data
 		public APTableDef TableDef
 		{
 			get { return _tableDef; }
+		}
+
+
+		/// <summary>
+		/// 'FROM' clause.
+		/// </summary>
+		public APSqlFromClause FromClause
+		{
+			get { return _fromClause; }
+			set { _fromClause = value; }
 		}
 
 
