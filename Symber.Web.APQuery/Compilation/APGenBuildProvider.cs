@@ -40,26 +40,28 @@ namespace Symber.Web.Compilation
 		/// </summary>
 		public static void Register()
 		{
-			IsPrecompling = (bool)typeof(BuildManager)
-				.GetProperty("SkipTopLevelCompilationExceptions", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
-				.GetValue(null, null);
+			System.Web.Compilation.BuildProvider.RegisterBuildProvider(".apgen", typeof(Symber.Web.Compilation.APGenBuildProvider));
 
-			if (IsPrecompling)
-			{
-				//
-				// Add ".apgen" file build provider
-				//
+			//IsPrecompling = (bool)typeof(BuildManager)
+			//	.GetProperty("SkipTopLevelCompilationExceptions", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
+			//	.GetValue(null, null);
 
-				System.Web.Compilation.BuildProvider.RegisterBuildProvider(".apgen", typeof(Symber.Web.Compilation.APGenBuildProvider));
-			}
-			else
-			{
-				//
-				// Sync database and init data.
-				//
+			//if (IsPrecompling)
+			//{
+			//	//
+			//	// Add ".apgen" file build provider
+			//	//
 
-				//APGenManager.SyncAndInitData(HttpRuntime.AppDomainAppPath);
-			}
+			//	System.Web.Compilation.BuildProvider.RegisterBuildProvider(".apgen", typeof(Symber.Web.Compilation.APGenBuildProvider));
+			//}
+			//else
+			//{
+			//	//
+			//	// Sync database and init data.
+			//	//
+
+			//	//APGenManager.SyncAndInitData(HttpRuntime.AppDomainAppPath);
+			//}
 		}
 
 
@@ -114,7 +116,9 @@ namespace Symber.Web.Compilation
 				APGen gen = APGenManager.OpenGenDocument(path);
 				CodeDomProvider provider = assemblyBuilder.CodeDomProvider;
 				provider.GenerateCodeFromCompileUnit(gen.Generate(), writer, null);
-				//gen.SyncData();
+
+				writer.Flush();
+				writer.Close();
 			}
 		}
 
