@@ -715,7 +715,7 @@ namespace Symber.Web.Data
 				WriteWhere(writer, command.WhereClause, dbCmd);
 				WriteGroupBy(writer, command.GroupByClause, dbCmd);
 				WriteHaving(writer, command.HavingClause, dbCmd);
-				WriteOrderBy(writer, command.OrderByClause);
+				//WriteOrderBy(writer, command.OrderByClause);
 
 			}
 
