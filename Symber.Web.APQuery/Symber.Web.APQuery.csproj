@@ -99,6 +99,7 @@
     <Compile Include="Compilation\Gen\NameValueAPGenElement.cs" />
     <Compile Include="Compilation\Gen\NameValueAPGenElementCollection.cs" />
     <Compile Include="Data\APDalProviderHelper.cs" />
+    <Compile Include="Data\SqlExpr\APSqlNullExpr.cs" />
     <Compile Include="Data\SqlExpr\APSqlDateGroupExpr.cs" />
     <Compile Include="Data\SqlExpr\APSqlAggregationExpr.cs" />
     <Compile Include="Data\SqlExpr\APSqlAsteriskExpr.cs" />

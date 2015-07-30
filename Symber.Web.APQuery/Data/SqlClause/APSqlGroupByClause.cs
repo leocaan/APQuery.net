@@ -63,8 +63,10 @@ namespace Symber.Web.Data
 		/// <returns>The next phrase.</returns>
 		public override IAPSqlPhrase SetNext(IAPSqlPhrase phrase)
 		{
-			if (phrase is APSqlExprPhrase || phrase == null)
+			if (phrase is APSqlExprPhrase)
 				return base.SetNext(phrase);
+			else if (phrase == null)
+				return base.SetNext(new APSqlExprPhrase(APSqlNullExpr.Expr));
 
 			string typeName = phrase.GetType().Name;
 			throw new APDataException(APResource.GetString(APResource.APData_PhraseNextError,

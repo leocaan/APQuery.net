@@ -15,7 +15,7 @@ namespace Symber.Web.Data
 		/// <summary>
 		/// The static SQL "*" Expression.
 		/// </summary>
-		public static APSqlAsteriskExpr Asterisk = new APSqlAsteriskExpr();
+		public static APSqlAsteriskExpr Expr = new APSqlAsteriskExpr();
 
 
 		#endregion

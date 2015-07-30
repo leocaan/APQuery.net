@@ -1,11 +1,12 @@
-﻿
+﻿using System;
+
 namespace Symber.Web.Data
 {
 
 	/// <summary>
 	/// Base class of all SQL command.
 	/// </summary>
-	public abstract class APSqlCommand
+	public abstract class APSqlCommand : IAPSqlPhrase
 	{
 
 		#region [ Fields ]
@@ -27,6 +28,41 @@ namespace Symber.Web.Data
 		{
 			get { return _commandNameSuitable; }
 			set { _commandNameSuitable = value; }
+		}
+
+
+		#endregion
+
+
+		#region [ Implementation of IAPSqlPhrase ]
+
+
+		/// <summary>
+		/// Set next phrase.
+		/// </summary>
+		/// <param name="phrase">The next phrase.</param>
+		/// <returns>The next phrase.</returns>
+		public IAPSqlPhrase SetNext(IAPSqlPhrase phrase)
+		{
+			throw new NotImplementedException();
+		}
+
+
+		/// <summary>
+		/// Next phrase.
+		/// </summary>
+		public IAPSqlPhrase Next
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+
+		/// <summary>
+		/// Last phrase.
+		/// </summary>
+		public IAPSqlPhrase Last
+		{
+			get { throw new NotImplementedException(); }
 		}
 
 

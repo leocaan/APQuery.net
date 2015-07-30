@@ -62,11 +62,204 @@ namespace Symber.Web.Data
 		/// <returns>The next phrase.</returns>
 		public override IAPSqlPhrase SetNext(IAPSqlPhrase phrase)
 		{
-			if (phrase is APSqlExprPhrase || phrase == null)
+			if (phrase is APSqlExprPhrase)
 				return base.SetNext(phrase);
+			else if (phrase == null)
+				return base.SetNext(new APSqlExprPhrase(APSqlNullExpr.Expr));
 
 			throw new APDataException(APResource.GetString(APResource.APData_PhraseNextError,
 				GetType().Name, phrase.GetType().Name, typeof(APSqlExprPhrase).Name));
+		}
+
+
+		#endregion
+
+
+		#region [ Override Implementation of Operator ]
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Boolean value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Byte value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Char value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(DateTime value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Decimal value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Double value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Guid value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Int16 value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Int32 value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Int64 value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(SByte value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(Single value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(String value)
+		{
+			APSqlExpr expr;
+			if (value == null)
+				expr = new APSqlNullExpr();
+			else if (value.StartsWith("~~"))
+				expr = new APSqlConstExpr(value.Substring(1));
+			else if (value.StartsWith("~"))
+				expr = new APSqlThroughExpr(value.Substring(1));
+			else
+				expr = new APSqlConstExpr(value);
+			return new APSqlExprPhrase(expr);
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(UInt16 value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(UInt32 value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
+		}
+
+
+		/// <summary>
+		/// Implicit conversion operator.
+		/// </summary>
+		/// <param name="value">Const Value.</param>
+		/// <returns>Target.</returns>
+		public static implicit operator APSqlExprPhrase(UInt64 value)
+		{
+			return new APSqlExprPhrase(new APSqlConstExpr(value));
 		}
 
 

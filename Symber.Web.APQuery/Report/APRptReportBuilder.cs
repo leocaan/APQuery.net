@@ -122,7 +122,7 @@ namespace Symber.Web.Report
 				column.AddToQueryWherePhrases(where);
 				order.Add(column.GetQueryOrderByPhrase(def.According));
 			}
-			select.Add(APSqlAsteriskExpr.Asterisk.Count().As(COUNT_ALIAS));
+			select.Add(APSqlAsteriskExpr.Expr.Count().As(COUNT_ALIAS));
 
 
 

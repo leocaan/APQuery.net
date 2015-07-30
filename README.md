@@ -198,6 +198,18 @@ SELECT DISTINCT Department.*
 
 In the following, we only write SQL Expression.
 
+**Value and through expression (New)**
+'~' is a escape character, a string startwith '~' while be through parse after expression.
+```cs
+APQuery
+   .select(dep.DepartmentId, 3, "abc", "~3*3", null)
+   .from(dep);
+```
+```sql
+SELECT Department.DepartmentId, 3, 'abc', 3*3, NULL
+  FROM Department
+```
+
 **Column Alias**
 ```cs
 APQuery
