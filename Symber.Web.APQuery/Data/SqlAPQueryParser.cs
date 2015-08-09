@@ -260,6 +260,32 @@ namespace Symber.Web.Data
 		}
 
 
+		private bool TryWriteValue(ParserWriter writer, object value)
+		{
+			if (value == null)
+			{
+				writer.Write("NULL");
+			}
+			else if (value is APColumnDef)
+			{
+				writer.Write(new APSqlColumnExpr(value as APColumnDef).ValueExpr);
+			}
+			else if (value is IAPSqlValueExpr)
+			{
+				writer.Write((value as IAPSqlValueExpr).ValueExpr);
+			}
+			else if (value is APSqlExpr)
+			{
+				writer.Write((value as APSqlExpr).SelectExpr);
+			}
+			else
+			{
+				return false;
+			}
+			return true;
+		}
+
+
 		private void WriteConditionPhrase(ParserWriter writer, APSqlWherePhrase phrase, APSqlConditionJoinType join, SqlCommand dbCmd)
 		{
 			bool isFirst = true;
@@ -290,7 +316,7 @@ namespace Symber.Web.Data
 					// change to check ConditionOperator.
 					if (cond.ConditionOperator != APSqlConditionOperator.Exists && cond.ConditionOperator != APSqlConditionOperator.NotExists)
 						WriteSelectExpression(writer, cond.Expr);
-					
+
 
 					if (cond.ConditionOperator == APSqlConditionOperator.Equals /*&& !cond.IsRelationDef*/ && (cond.Value == null || cond.Value == DBNull.Value))
 					{
@@ -322,102 +348,69 @@ namespace Symber.Web.Data
 
 						object value = cond.Value;
 
-						if (value == null)
+						if (!TryWriteValue(writer, value))
 						{
-							writer.Write("NULL");
-						}
-						else if (value is APColumnDef)
-						{
-							writer.Write(new APSqlColumnExpr(value as APColumnDef).SelectExpr);
-						}
-						else if (value is APSqlExpr)
-						{
-							writer.Write((value as APSqlExpr).SelectExpr);
-						}
-						else if (value is APSqlSelectCommand)
-						{
-							switch (cond.SubQueryScalarRestrict)
+							if (value is APSqlSelectCommand)
 							{
-								case APSqlSubQueryScalarRestrict.All: writer.Write("ALL"); break;
-								case APSqlSubQueryScalarRestrict.Some: writer.Write("SOME"); break;
-								case APSqlSubQueryScalarRestrict.Any: writer.Write("ANY"); break;
-							}
+								switch (cond.SubQueryScalarRestrict)
+								{
+									case APSqlSubQueryScalarRestrict.All: writer.Write("ALL"); break;
+									case APSqlSubQueryScalarRestrict.Some: writer.Write("SOME"); break;
+									case APSqlSubQueryScalarRestrict.Any: writer.Write("ANY"); break;
+								}
 
-							writer.Write("(");
-							int idented = writer.Idented++;
-							writer.WriteLine();
-							ParseSelectInternal(value as APSqlSelectCommand, 0, dbCmd, writer);
-							writer.Idented = idented;
-							writer.Write(")");
-						}
-						else
-						{
-							if (cond.ConditionOperator == APSqlConditionOperator.In || cond.ConditionOperator == APSqlConditionOperator.NotIn)
-							{
 								writer.Write("(");
-								int i = 0;
-								foreach (object val in value as Array)
-								{
-									if (i != 0)
-										writer.Write(',');
-									string paramName = writer.GetSuitableParameterName(cond.ParamName);
-									paramName = String.Format("@{0}${1}", paramName, i);
-									writer.Write(paramName);
-									AddParameter(dbCmd, paramName, val, ParameterDirection.Input);
-									i++;
-								}
+								int idented = writer.Idented++;
+								writer.WriteLine();
+								ParseSelectInternal(value as APSqlSelectCommand, 0, dbCmd, writer);
+								writer.Idented = idented;
 								writer.Write(")");
-							}
-							else if (cond.ConditionOperator == APSqlConditionOperator.Between || cond.ConditionOperator == APSqlConditionOperator.NotBetween)
-							{
-								object begin = (value as Array).GetValue(0);
-								object end = (value as Array).GetValue(1);
-
-								if (begin == null)
-								{
-									writer.Write("NULL");
-								}
-								else if (begin is APColumnDef)
-								{
-									writer.Write(new APSqlColumnExpr(begin as APColumnDef).SelectExpr);
-								}
-								else if (begin is APSqlExpr)
-								{
-									writer.Write((begin as APSqlExpr).SelectExpr);
-								}
-								else
-								{
-									string paramName = writer.GetSuitableParameterName(cond.ParamName);
-									writer.Write("@" + paramName);
-									AddParameter(dbCmd, paramName, begin, ParameterDirection.Input);
-								}
-
-								writer.Write("AND");
-
-								if (end == null)
-								{
-									writer.Write("NULL");
-								}
-								else if (end is APColumnDef)
-								{
-									writer.Write(new APSqlColumnExpr(end as APColumnDef).SelectExpr);
-								}
-								else if (end is APSqlExpr)
-								{
-									writer.Write((end as APSqlExpr).SelectExpr);
-								}
-								else
-								{
-									string paramName = writer.GetSuitableParameterName(cond.ParamName);
-									writer.Write("@" + paramName);
-									AddParameter(dbCmd, paramName, end, ParameterDirection.Input);
-								}
 							}
 							else
 							{
-								string paramName = writer.GetSuitableParameterName(cond.ParamName);
-								writer.Write("@" + paramName);
-								AddParameter(dbCmd, paramName, value, ParameterDirection.Input);
+								if (cond.ConditionOperator == APSqlConditionOperator.In || cond.ConditionOperator == APSqlConditionOperator.NotIn)
+								{
+									writer.Write("(");
+									int i = 0;
+									foreach (object val in value as Array)
+									{
+										if (i != 0)
+											writer.Write(',');
+										string paramName = writer.GetSuitableParameterName(cond.ParamName);
+										paramName = String.Format("@{0}${1}", paramName, i);
+										writer.Write(paramName);
+										AddParameter(dbCmd, paramName, val, ParameterDirection.Input);
+										i++;
+									}
+									writer.Write(")");
+								}
+								else if (cond.ConditionOperator == APSqlConditionOperator.Between || cond.ConditionOperator == APSqlConditionOperator.NotBetween)
+								{
+									object begin = (value as Array).GetValue(0);
+									object end = (value as Array).GetValue(1);
+
+
+									if (!TryWriteValue(writer, begin))
+									{
+										string paramName = writer.GetSuitableParameterName(cond.ParamName);
+										writer.Write("@" + paramName);
+										AddParameter(dbCmd, paramName, begin, ParameterDirection.Input);
+									}
+									writer.Write("AND");
+
+									if (!TryWriteValue(writer, end))
+									{
+										string paramName = writer.GetSuitableParameterName(cond.ParamName);
+										writer.Write("@" + paramName);
+										AddParameter(dbCmd, paramName, end, ParameterDirection.Input);
+									}
+								}
+								else
+								{
+									string paramName = writer.GetSuitableParameterName(cond.ParamName);
+									writer.Write("@" + paramName);
+									AddParameter(dbCmd, paramName, value, ParameterDirection.Input);
+								}
 							}
 						}
 					}
@@ -479,11 +472,7 @@ namespace Symber.Web.Data
 					writer.Write(phrase.AssignmentExpr.SelectExpr);
 					writer.Write("=");
 
-					if (phrase.IsRelationValueExpr)
-					{
-						writer.Write(phrase.RelationValueExpr.ValueExpr);
-					}
-					else
+					if (!TryWriteValue(writer, phrase.Value))
 					{
 						string paramName = writer.GetSuitableParameterName(phrase.ParamName);
 						writer.Write("@" + paramName);
@@ -513,11 +502,7 @@ namespace Symber.Web.Data
 					else
 						isFirst = false;
 
-					if (phrase.IsRelationValueExpr)
-					{
-						writer.Write(phrase.RelationValueExpr.ValueExpr);
-					}
-					else
+					if (!TryWriteValue(writer, phrase.Value))
 					{
 						string paramName = writer.GetSuitableParameterName(phrase.ParamName);
 						writer.Write("@" + paramName);

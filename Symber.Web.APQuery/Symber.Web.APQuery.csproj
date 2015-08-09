@@ -106,7 +106,7 @@
     <Compile Include="Data\SqlExpr\APSqlDateGroupMode.cs" />
     <Compile Include="Data\SqlExpr\APSqlOperateExpr.cs" />
     <Compile Include="Data\SqlExpr\IAPSqlValueExpr.cs" />
-    <Compile Include="Data\SqlExpr\APSqlThroughExpr.cs" />
+    <Compile Include="Data\SqlExpr\APSqlRawExpr.cs" />
     <Compile Include="Data\SqlExpr\APSqlConstExpr.cs" />
     <Compile Include="Data\SqlExpr\APSqlColumnExpr.cs" />
     <Compile Include="Data\SqlExpr\APSqlExpr.cs" />
