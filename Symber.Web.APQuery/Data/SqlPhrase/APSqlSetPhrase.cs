@@ -34,9 +34,6 @@ namespace Symber.Web.Data
 			if (Object.Equals(assignmentExpr, null))
 				throw new ArgumentNullException("assignmentExpr");
 
-			if (value is String)
-				value = APSqlExpr.TryFitStringToRawExpr((string)value);
-
 			_assignmentExpr = assignmentExpr;
 			_paramName = String.IsNullOrEmpty(paramName) ? assignmentExpr.ParamName : paramName;
 			_value = value;

@@ -200,7 +200,7 @@ In the following, we only write SQL Expression.
 
 **Value and through expression (New)**
 
-'~' is a escape character, when the first letter is '~' while be parse after the letter through.
+'~' is a escape character, a string startwith '~' while be through parse after expression.
 
 ```cs
 APQuery

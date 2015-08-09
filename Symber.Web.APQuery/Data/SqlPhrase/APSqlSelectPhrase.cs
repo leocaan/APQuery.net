@@ -242,7 +242,16 @@ namespace Symber.Web.Data
 		/// <returns>Target.</returns>
 		public static implicit operator APSqlSelectPhrase(String value)
 		{
-			return new APSqlSelectPhrase(APSqlExpr.FitStringToExpr(value));
+			APSqlExpr expr;
+			if (value == null)
+				expr = new APSqlNullExpr();
+			else if (value.StartsWith("~~"))
+				expr = new APSqlConstExpr(value.Substring(1));
+			else if (value.StartsWith("~"))
+				expr = new APSqlThroughExpr(value.Substring(1));
+			else
+				expr = new APSqlConstExpr(value);
+			return new APSqlSelectPhrase(expr);
 		}
 
 

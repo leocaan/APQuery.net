@@ -8,53 +8,6 @@ namespace Symber.Web.Data
 	public abstract class APSqlExpr
 	{
 
-		#region [ Static ]
-
-
-		/// <summary>
-		/// The escape char '@'.
-		/// </summary>
-		internal const char EscapeChar = '@';
-
-
-		/// <summary>
-		/// Try to parse a string to APSqlExpr.
-		/// </summary>
-		/// <param name="raw">The raw string.</param>
-		/// <returns>APSqlExpr</returns>
-		internal static APSqlExpr FitStringToExpr(string raw)
-		{
-			if (raw == null)
-				return new APSqlNullExpr();
-
-			var length = raw.Length;
-			if (length > 0 && raw[0] == EscapeChar)
-			{
-				if (length > 1 && raw[1] == EscapeChar)
-					return new APSqlConstExpr(raw.Substring(1));
-				return new APSqlRawExpr(raw.Substring(1));
-			}
-
-			return new APSqlConstExpr(raw);
-		}
-
-
-		internal static object TryFitStringToRawExpr(string raw)
-		{
-			var length = raw.Length;
-			if (length > 0 && raw[0] == EscapeChar)
-			{
-				if (length > 1 && raw[1] == EscapeChar)
-					return raw.Substring(1);
-				return new APSqlRawExpr(raw.Substring(1));
-			}
-
-			return raw;
-		}
-
-
-		#endregion
-
 		#region [ Properties ]
 
 

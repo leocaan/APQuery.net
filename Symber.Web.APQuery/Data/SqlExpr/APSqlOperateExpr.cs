@@ -18,24 +18,6 @@ namespace Symber.Web.Data
 		public abstract string ParamName { get; }
 
 
-		/// <summary>
-		/// Ascending 'ORDER BY' phrase.
-		/// </summary>
-		public APSqlOrderPhrase Asc
-		{
-			get { return new APSqlOrderPhrase(this, APSqlOrderAccording.Asc); }
-		}
-
-
-		/// <summary>
-		/// Descending 'ORDER BY' phrase.
-		/// </summary>
-		public APSqlOrderPhrase Desc
-		{
-			get { return new APSqlOrderPhrase(this, APSqlOrderAccording.Desc); }
-		}
-
-
 		#endregion
 
 
