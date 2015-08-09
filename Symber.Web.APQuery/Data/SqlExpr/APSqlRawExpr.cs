@@ -3,59 +3,59 @@ namespace Symber.Web.Data
 {
 
 	/// <summary>
-	/// SQL not parser through Expression.
+	/// SQL raw string Expression.
 	/// </summary>
-	public class APSqlThroughExpr : APSqlOperateExpr, IAPSqlValueExpr
+	public class APSqlRawExpr : APSqlOperateExpr, IAPSqlValueExpr
 	{
 
 		#region [ Static ]
 
 
 		/// <summary>
-		/// Create a new APSqlConstExpr;
+		/// Create a new APSqlRawExpr;
 		/// </summary>
 		/// <param name="format">The Format.</param>
-		/// <returns>APSqlConstExpr.</returns>
-		public static APSqlThroughExpr Expr(string format)
+		/// <returns>APSqlRawExpr.</returns>
+		public static APSqlRawExpr Expr(string format)
 		{
-			return new APSqlThroughExpr(format);
+			return new APSqlRawExpr(format);
 		}
 
 
 		/// <summary>
-		/// Create a new APSqlConstExpr;
+		/// Create a new APSqlRawExpr;
 		/// </summary>
 		/// <param name="format">The Format.</param>
 		/// <param name="paramName">Command parameter name.</param>
-		/// <returns>APSqlConstExpr.</returns>
-		public static APSqlThroughExpr Expr(string format, string paramName)
+		/// <returns>APSqlRawExpr.</returns>
+		public static APSqlRawExpr Expr(string format, string paramName)
 		{
-			return new APSqlThroughExpr(format, paramName);
+			return new APSqlRawExpr(format, paramName);
 		}
 
 
 		/// <summary>
-		/// Create a new APSqlConstExpr;
+		/// Create a new APSqlRawExpr;
 		/// </summary>
 		/// <param name="maybyTableDef">May be about Table defined.</param>
 		/// <param name="format">The Format.</param>
-		/// <returns>APSqlConstExpr.</returns>
-		public static APSqlThroughExpr Expr(APTableDef maybyTableDef, string format)
+		/// <returns>APSqlRawExpr.</returns>
+		public static APSqlRawExpr Expr(APTableDef maybyTableDef, string format)
 		{
-			return new APSqlThroughExpr(maybyTableDef, format);
+			return new APSqlRawExpr(maybyTableDef, format);
 		}
 
 
 		/// <summary>
-		/// Create a new APSqlConstExpr;
+		/// Create a new APSqlRawExpr;
 		/// </summary>
 		/// <param name="maybyTableDef">May be about Table defined.</param>
 		/// <param name="format">The Format.</param>
 		/// <param name="paramName">Command parameter name.</param>
-		/// <returns>APSqlConstExpr.</returns>
-		public static APSqlThroughExpr Expr(APTableDef maybyTableDef, string format, string paramName)
+		/// <returns>APSqlRawExpr.</returns>
+		public static APSqlRawExpr Expr(APTableDef maybyTableDef, string format, string paramName)
 		{
-			return new APSqlThroughExpr(maybyTableDef, format, paramName);
+			return new APSqlRawExpr(maybyTableDef, format, paramName);
 		}
 
 
@@ -77,44 +77,44 @@ namespace Symber.Web.Data
 
 
 		/// <summary>
-		/// Create a new APSqlThroughExpr
+		/// Create a new APSqlRawExpr
 		/// </summary>
 		/// <param name="format">The Fromat.</param>
-		public APSqlThroughExpr(string format)
+		public APSqlRawExpr(string format)
 			: this(null, format, null)
 		{
 		}
 
 
 		/// <summary>
-		/// Create a new APSqlThroughExpr
+		/// Create a new APSqlRawExpr
 		/// </summary>
 		/// <param name="format">The Fromat.</param>
 		/// <param name="paramName">Command parameter name.</param>
-		public APSqlThroughExpr(string format, string paramName)
+		public APSqlRawExpr(string format, string paramName)
 			: this(null, format, paramName)
 		{
 		}
 
 
 		/// <summary>
-		/// Create a new APSqlThroughExpr
+		/// Create a new APSqlRawExpr
 		/// </summary>
 		/// <param name="maybyTableDef">May be about Table defined.</param>
 		/// <param name="format">The Fromat.</param>
-		public APSqlThroughExpr(APTableDef maybyTableDef, string format)
+		public APSqlRawExpr(APTableDef maybyTableDef, string format)
 			: this(maybyTableDef, format, null)
 		{
 		}
 
 
 		/// <summary>
-		/// Create a new APSqlThroughExpr
+		/// Create a new APSqlRawExpr
 		/// </summary>
 		/// <param name="maybyTableDef">May be about Table defined.</param>
 		/// <param name="format">The Fromat.</param>
 		/// <param name="paramName">Command parameter name.</param>
-		public APSqlThroughExpr(APTableDef maybyTableDef, string format, string paramName)
+		public APSqlRawExpr(APTableDef maybyTableDef, string format, string paramName)
 		{
 			_maybeTableDef = maybyTableDef;
 			_through = format;

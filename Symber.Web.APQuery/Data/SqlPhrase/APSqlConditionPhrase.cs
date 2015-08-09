@@ -59,6 +59,10 @@ namespace Symber.Web.Data
 			{
 				_paramName = expr.ParamName;
 			}
+
+			if (value is String)
+				value = APSqlExpr.TryFitStringToRawExpr((string)value);
+
 			_value = value;
 			_conditionOperator = conditionOperator;
 		}
