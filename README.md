@@ -8,6 +8,8 @@ SQL expression, database access layout, business logic process and data entity.
 
 **<font size="+1">Some demos will be links: https://github.com/leocaan/APQuery.net-Demo/</font>**
 
+**<font size="+1">This project no longer to develop, I created a new project 'APQuery.net-4x' links: https://github.com/leocaan/APQuery.net-4x/</font>**
+
 
 Getting Started
 ---------------
